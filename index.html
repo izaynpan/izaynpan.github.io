@@ -172,6 +172,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-更改Spotify-Premium-win端的默认缓存位置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/21/%E6%9B%B4%E6%94%B9Spotify-Premium-win%E7%AB%AF%E7%9A%84%E9%BB%98%E8%AE%A4%E7%BC%93%E5%AD%98%E4%BD%8D%E7%BD%AE/">更改Spotify Premium win端的默认缓存位置</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/21/%E6%9B%B4%E6%94%B9Spotify-Premium-win%E7%AB%AF%E7%9A%84%E9%BB%98%E8%AE%A4%E7%BC%93%E5%AD%98%E4%BD%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2020-06-21T13:26:14.935Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Spotify虽然设置里提供了更改缓存位置的功能，但Premium版还是会保存在默认的c盘下<code>C:\Users\用户名\AppData\Local\Spotify\Data</code>（Premium用户感觉有被冒犯到），重度用户可能一个月就攒了8G(＃°Д°)，所以应该很有必要解决一下（1T的SSD做系统盘请忽视）。</p>
+<p>1．选好缓存的新家，比如<code>D:\Spotify\Data</code>，将原缓存全部搬到新家并对旧家进行拆迁操作(ﾉ*･ω･)ﾉ</p>
+<p>2．打开万能的cmd，输入<code>mklink /J &quot;C:\Users\用户名\AppData\Local\Spotify\Data&quot; &quot;D:\spotify\Data&quot;</code>，成功会提示<code>Junction created for C:\Users\用户名\AppData\Local\Spotify\Data &lt;&lt;===&gt;&gt; D:\spotify\Data</code>之类的巴拉巴拉。</p>
+<p>感觉此时两文件夹就像哆啦A梦的两个四次元口袋，连接着同一个地方，不过本体在新家。</p>
+<p>是不是可以用这种方法把c盘一些很大的文件全部移走？（滑稽被打）</p>
+<p>Windows下mklink命令参考<a href="https://liam.page/2018/12/10/mklink-in-Windows/" target="_blank" rel="noopener">博文</a>。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-flvmkv格式无损转mp4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -808,84 +883,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-何为随笔" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/%E4%BD%95%E4%B8%BA%E9%9A%8F%E7%AC%94/">何为随笔</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/31/%E4%BD%95%E4%B8%BA%E9%9A%8F%E7%AC%94/" class="archive-article-date">
-  	<time datetime="2020-05-31T07:19:14.608Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>摘自<a href="https://baike.baidu.com/item/随笔/4153" target="_blank" rel="noopener">百度百科</a></p>
-</blockquote>
-<h2 id="随笔（文体形式）"><a href="#随笔（文体形式）" class="headerlink" title="随笔（文体形式）"></a>随笔（文体形式）</h2><p>随笔，顾名思义：随笔一记，是散文的一个分支，是议论文的一个变体，兼有议论和抒情两种特性，通常篇幅短小，形式多样，作者惯常用各种修辞手法曲折传达自己的见解和情感，语言灵动，婉而多讽，是过去社会较为流行的一种文体。随笔作为一种文学样式，是由法国散文家蒙田所创的。</p>
-<p>通常指一种散文体裁，随手笔录，抒情、叙事或评论不拘，篇幅短小。或指听课、读书时所作的记录。</p>
-        
-          <p class="article-more-link">
-            <a class="article-more-a" href="/2020/05/31/%E4%BD%95%E4%B8%BA%E9%9A%8F%E7%AC%94/">展开全文 </a>
-          </p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
