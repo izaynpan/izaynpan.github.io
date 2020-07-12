@@ -66,13 +66,25 @@
 		
 
 		
+
+		
 			<br />
-			<!-- <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=244 height=86 
-					src="//music.163.com/outchain/player?type=2&id=4900975&auto=0&height=66"></iframe> -->
-			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=244 height=86 
-			src="//music.163.com/outchain/player?type=2&id=444356294&auto=0&height=66"></iframe>
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+			<div id="aplayer"></div>
+			<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+			<script>
+			  const ap = new APlayer({
+				container: document.getElementById('aplayer'),
+					audio: [{
+					name: '一人行者',
+					artist: '12th&桃核',
+					url: 'http://m10.music.126.net/20200712114107/c6ec187abb91ef41c65ed8f97a8cf69c/ymusic/0cac/caa4/e914/35f7f00f4d2c95b31286202cd9a6f4e6.mp3',
+					cover: 'http://p2.music.126.net/eQHiLT1iQ1VtNXa6UTreNA==/109951162816845875.jpg?param=130y130'
+				}]
+			  });
+			</script>
 		
-		
+
 		<nav class="header-menu">
 			<ul>
 			
@@ -111,7 +123,6 @@
 					<a class="twitter" target="_blank" href="https://twitter.com/izaynpan" title="twitter"><i class="icon-twitter"></i></a>
 		        
 			</div>
-			
 		</nav>
 	</header>		
 </div>
@@ -507,7 +518,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多媒体</a>
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,7 +526,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,7 +534,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color4">多媒体</a>
               </li>
             
             <div class="clearfix"></div>
