@@ -15,8 +15,8 @@
 <meta property="og:site_name" content="Blog-izaynpan">
 <meta property="og:description" content="新建桌面右键应用模式.reg，添加以下代码保存，为防止乱码，以ANSI编码保存，双击运行写入注册表。 PS: 此种方式修改主题模式不适用于任务栏 12345678910111213141516171819202122232425262728293031[HKEY_CLASSES_ROOT\DesktopBackground\Shell\AppMode]&quot;icon&quot;&#x3D;&amp;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-29T13:43:55.596Z">
-<meta property="article:modified_time" content="2020-06-16T13:59:52.631Z">
+<meta property="article:published_time" content="2020-05-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-07-13T04:04:13.569Z">
 <meta property="article:author" content="IMZM低吟浅唱">
 <meta property="article:tag" content="win10">
 <meta name="twitter:card" content="summary">
@@ -125,9 +125,6 @@
 		        
 			</div>
 		</nav>
-
-		
-
 	</header>		
 </div>
 
@@ -210,14 +207,14 @@
 
         
         <a href="/2020/05/29/Windows10%E6%A1%8C%E9%9D%A2%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%B7%BB%E5%8A%A0%E6%B7%B1%E8%89%B2%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BA%AE%E8%89%B2%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-05-29T13:43:55.596Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
+  	<time datetime="2020-05-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>新建<code>桌面右键应用模式.reg</code>，添加以下代码保存，为防止乱码，以ANSI编码保存，双击运行写入注册表。</p>
+        <p>新建<code>桌面右键应用模式.reg</code>，添加以下代码保存，为防止乱码，以ANSI编码保存，双击运行写入注册表。</p>
 <p><em>PS: 此种方式修改主题模式不适用于任务栏</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[HKEY_CLASSES_ROOT\DesktopBackground\Shell\AppMode]</span><br><span class="line"></span><br><span class="line">&quot;icon&quot;&#x3D;&quot;themecpl.dll,-1&quot;</span><br><span class="line"></span><br><span class="line">&quot;MUIVerb&quot;&#x3D;&quot;应用模式&quot;</span><br><span class="line"></span><br><span class="line">&quot;Position&quot;&#x3D;&quot;Bottom&quot;</span><br><span class="line"></span><br><span class="line">&quot;SubCommands&quot;&#x3D;&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\DesktopBackground\Shell\AppMode\shell]</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\DesktopBackground\Shell\AppMode\shell\001flyout]</span><br><span class="line"></span><br><span class="line">&quot;Icon&quot;&#x3D;&quot;imageres.dll,-5411&quot;</span><br><span class="line"></span><br><span class="line">&quot;MUIVerb&quot;&#x3D;&quot;亮色模式&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\DesktopBackground\Shell\AppMode\shell\001flyout\command]</span><br><span class="line"></span><br><span class="line">@&#x3D;&quot;Reg Add HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize &#x2F;v AppsUseLightTheme &#x2F;t REG_DWORD &#x2F;d 1 &#x2F;f&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\DesktopBackground\Shell\AppMode\shell\002flyout]</span><br><span class="line"></span><br><span class="line">&quot;Icon&quot;&#x3D;&quot;imageres.dll,-5412&quot;</span><br><span class="line"></span><br><span class="line">&quot;MUIVerb&quot;&#x3D;&quot;深色模式&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\DesktopBackground\Shell\AppMode\shell\002flyout\command]</span><br><span class="line"></span><br><span class="line">@&#x3D;&quot;Reg Add HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize &#x2F;v AppsUseLightTheme &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f&quot;</span><br></pre></td></tr></table></figure>
 
