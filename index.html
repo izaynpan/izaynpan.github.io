@@ -212,8 +212,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>在仓库里创建新的分支hexo，存放Hexo生成的原始文件，原master分支存放生成的静态网页。备份时上传需备份的文件到hexo分支，恢复时拉取hexo分支到本地。</p>
-<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><p>博客内文件或文件夹的内容：</p>
-<ul>
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><h3 id="博客内文件或文件夹的内容"><a href="#博客内文件或文件夹的内容" class="headerlink" title="博客内文件或文件夹的内容"></a>博客内文件或文件夹的内容</h3><ul>
 <li><code>.deploy_git</code>: 执行<code>hexo g</code>自动生成，不需拷贝</li>
 <li><code>node_modules</code>: 安装包的目录，执行<code>npm install</code>自动生成，不需拷贝</li>
 <li><code>public</code>: 执行<code>hexo g</code>自动生成，不需拷贝</li>
@@ -226,8 +225,7 @@
 <li><code>package.json</code>: 依赖的模块列表，<strong>需拷贝</strong></li>
 <li><code>package-lock.json</code>: 模块安装记录，自动生成，不需拷贝</li>
 </ul>
-<p>操作：</p>
-<ol>
+<h3 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h3><ol>
 <li>在<code>.gitignore</code>里添加不需拷贝的内容，可以添加不需拷贝的主题（例如自带主题）。</li>
 <li>删除主题文件夹下的<code>.git/</code>，否则无法push（或者新增个备份文件夹<code>themesbk/themename</code>存放主题拷贝，然后push）</li>
 <li>在blog根目录执行命令<code>git init</code>初始化本地仓库</li>
@@ -395,6 +393,7 @@
 </li>
 </ul>
 <p>知道位置后就可以魔改了( •̀ ω •́ )✧，删除多余的或者添加需要的功能。（<strong>修改有风险，操作需谨慎</strong>）</p>
+<p>PS：<a href="https://cdn.libertycola.workers.dev/search?source=hp&ei=XdQPX8TKMZnhz7sPvqGFmAs&q=RightMenuMgr&oq=RightMenuMgr&gs_lcp=CgZwc3ktYWIQAzICCAAyAggAMgIIADIECAAQHjIECAAQHlDBIljBImDINWgBcAB4AIABpgGIAaYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdperABAA&sclient=psy-ab&ved=0ahUKEwiE7dHR9NDqAhWZ8HMBHb5QAbMQ4dUDCAc&uact=5" target="_blank" rel="noopener">RightMenuMgr</a>真香（滑稽被打）</p>
 
       
 
