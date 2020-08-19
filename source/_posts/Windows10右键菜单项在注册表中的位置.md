@@ -13,3 +13,6 @@ date: 2020-6-28
 - **桌面右键：**`HKEY_CLASSES_ROOT\DesktopBackground\Shell`, `HKEY_CLASSES_ROOT\DesktopBackground\shellex\ContextMenuHandlers`
 
 知道位置后就可以魔改了( •̀ ω •́ )✧，删除多余的或者添加需要的功能。（**修改有风险，操作需谨慎**）
+
+PS：[RightMenuMgr](https://cdn.libertycola.workers.dev/search?source=hp&ei=XdQPX8TKMZnhz7sPvqGFmAs&q=RightMenuMgr&oq=RightMenuMgr&gs_lcp=CgZwc3ktYWIQAzICCAAyAggAMgIIADIECAAQHjIECAAQHlDBIljBImDINWgBcAB4AIABpgGIAaYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdperABAA&sclient=psy-ab&ved=0ahUKEwiE7dHR9NDqAhWZ8HMBHb5QAbMQ4dUDCAc&uact=5)真香（滑稽被打）
+
