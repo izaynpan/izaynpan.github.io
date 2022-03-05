@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://izaynpan.github.io">
-  <title>何为随笔 | Blog-izaynpan</title>
+  <title>Android Studio一些配置文件夹位置更改 | Blog-izaynpan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘自百度百科  随笔（文体形式）随笔，顾名思义：随笔一记，是散文的一个分支，是议论文的一个变体，兼有议论和抒情两种特性，通常篇幅短小，形式多样，作者惯常用各种修辞手法曲折传达自己的见解和情感，语言灵动，婉而多讽，是过去社会较为流行的一种文体。随笔作为一种文学样式，是由法国散文家蒙田所创的。 通常指一种散文体裁，随手笔录，抒情、叙事或评论不拘，篇幅短小。或指听课、读书时所作的记录。">
+  <meta name="description" content="Android Studio默认在系统盘里创建安卓虚拟机、下载gradle相关文件，而AndroidStudio本体和Sdk位置可在安装时更改。以上文件皆会吃掉大量硬盘空间，可更改到系统盘外其他硬盘。   更改.gradle位置gradle相关文件默认在系统盘:\Users\username\.gradle（仅针对Windows），关闭Android Studio后将文件夹.gradle整个剪切到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="何为随笔">
-<meta property="og:url" content="http://izaynpan.github.io/2020/05/31/%E4%BD%95%E4%B8%BA%E9%9A%8F%E7%AC%94/index.html">
+<meta property="og:title" content="Android Studio一些配置文件夹位置更改">
+<meta property="og:url" content="http://izaynpan.github.io/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/index.html">
 <meta property="og:site_name" content="Blog-izaynpan">
-<meta property="og:description" content="摘自百度百科  随笔（文体形式）随笔，顾名思义：随笔一记，是散文的一个分支，是议论文的一个变体，兼有议论和抒情两种特性，通常篇幅短小，形式多样，作者惯常用各种修辞手法曲折传达自己的见解和情感，语言灵动，婉而多讽，是过去社会较为流行的一种文体。随笔作为一种文学样式，是由法国散文家蒙田所创的。 通常指一种散文体裁，随手笔录，抒情、叙事或评论不拘，篇幅短小。或指听课、读书时所作的记录。">
+<meta property="og:description" content="Android Studio默认在系统盘里创建安卓虚拟机、下载gradle相关文件，而AndroidStudio本体和Sdk位置可在安装时更改。以上文件皆会吃掉大量硬盘空间，可更改到系统盘外其他硬盘。   更改.gradle位置gradle相关文件默认在系统盘:\Users\username\.gradle（仅针对Windows），关闭Android Studio后将文件夹.gradle整个剪切到">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-13T04:01:31.637Z">
+<meta property="og:image" content="http://izaynpan.github.io/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img1.jpg">
+<meta property="og:image" content="http://izaynpan.github.io/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img2.jpg">
+<meta property="og:image" content="http://izaynpan.github.io/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img3.jpg">
+<meta property="article:published_time" content="2022-03-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-05T05:19:49.015Z">
 <meta property="article:author" content="IMZM低吟浅唱">
-<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="others">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://izaynpan.github.io/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Blog-izaynpan" type="application/atom+xml">
   
@@ -194,53 +198,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-何为随笔" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Android Studio一些配置文件夹位置更改" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      何为随笔
+      Android Studio一些配置文件夹位置更改
     </h1>
   
 
         
-        <a href="/2020/05/31/%E4%BD%95%E4%B8%BA%E9%9A%8F%E7%AC%94/" class="archive-article-date">
-  	<time datetime="2020-05-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
+        <a href="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/" class="archive-article-date">
+  	<time datetime="2022-03-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>摘自<a href="https://baike.baidu.com/item/随笔/4153" target="_blank" rel="noopener">百度百科</a></p>
-</blockquote>
-<h2 id="随笔（文体形式）"><a href="#随笔（文体形式）" class="headerlink" title="随笔（文体形式）"></a>随笔（文体形式）</h2><p>随笔，顾名思义：随笔一记，是散文的一个分支，是议论文的一个变体，兼有议论和抒情两种特性，通常篇幅短小，形式多样，作者惯常用各种修辞手法曲折传达自己的见解和情感，语言灵动，婉而多讽，是过去社会较为流行的一种文体。随笔作为一种文学样式，是由法国散文家蒙田所创的。</p>
-<p>通常指一种散文体裁，随手笔录，抒情、叙事或评论不拘，篇幅短小。或指听课、读书时所作的记录。</p>
-<a id="more"></a>
+        <p>Android Studio默认在系统盘里创建安卓虚拟机、下载gradle相关文件，而AndroidStudio本体和Sdk位置可在安装时更改。以上文件皆会吃掉大量硬盘空间，可更改到系统盘外其他硬盘。</p>
+<center><img src="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img1.jpg"></center>
 
-<h2 id="引证解释"><a href="#引证解释" class="headerlink" title="引证解释"></a>引证解释</h2><p>1．犹言随手下笔。鲁迅 《集外集拾遗·&lt;铁流&gt;编校后记》：“觉得译文很笨拙，而且怕有错字、脱字，望看的时候随笔代为改正一下。”</p>
-<p>2．一种灵活随便的笔记或文体。宋 洪迈《&lt;容斋随笔&gt;序》：“意之所之，随即纪录，因其后先，无复诠次，故目之曰随笔。”</p>
-<p>3．一种散文体裁。篇幅短小，表现形式灵活自由，可以抒情、叙事或评论。鲁迅《书信集·致李小峰》：“我们几个人在选我的随笔，从《坟》起到《二心》止。” </p>
-<h2 id="写作要点"><a href="#写作要点" class="headerlink" title="写作要点"></a>写作要点</h2><p>随笔这类文章，或讲述文化知识，或发表学术观点，或评析世态人情，启人心智，引人深思。在写法上，它们往往旁征博引，而不作理论性太强的阐释，行文缜密而不失活泼，结构自由而不失谨严，因此，富有“理趣”是它们的突出特色。</p>
-<p>阅读这类文章，要整体把握文章的内容和风格，提炼作者的主要观点品味妙语佳句，还要敢于发表自己的见解。</p>
-<p>随笔是散文的一种，写随笔就像与邻家谈心般轻松，没有任何的负担，没有华丽的词藻，没有严密的结构。随笔的形式可以不受体裁的限制，灵活多样，不拘一格，可以观景抒情；可以睹物谈看法；可以读书谈感想；可以一事一议，也可以对同类事进行综合议论。随笔也不受字数的限制，短的几十字，长的几百字，篇幅长短皆由内容而定。</p>
-<p>写随笔最重要的是要表达出写作的意图：或者是一种快乐的心情，或者是一点小感悟，或者是一个新观点……总之，随笔之“随”字，正是突出了其如同邻家大婶般亲切与平易近人的特点。</p>
-<p>生活随笔就是日常生活中心情、感悟、新观点、新发现……生活如浩瀚的大海，博大宽广，时时处处事事都可以写成文章。</p>
-<p>“五四”新文学时代，现代随笔的创作繁荣一时，但“随笔”的命名与内涵尚未及统一，随笔这一文体便被左翼文学排斥至文学边缘。这给当代随笔的文体研究带来了一定困难。从现代随笔的滥觞、朱自清的“散文观”、周作人和鲁迅的“随笔观”等角度入手，在现代散文众多的命名中寻找随笔的源头，以期为当代随笔的发展提供可资借鉴的依据。</p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="记叙性随笔"><a href="#记叙性随笔" class="headerlink" title="记叙性随笔"></a>记叙性随笔</h3><p>记叙性随笔大多取材于日常生活中的片断或作者的偶然经历，基本内容是叙事写人。随笔的主旨是写情见性，它的抒写往往融入作者的主观感受，有时直截了当说出，有时是隐藏在文字背后；它描写的往往是人人类似经历的平凡小事，但经过你仔细体味后，会使你察觉世俗风情、感悟人生道理。</p>
-<h3 id="议论性随笔"><a href="#议论性随笔" class="headerlink" title="议论性随笔"></a>议论性随笔</h3><p>这类随笔又叫“随感”或“杂感”。所谓“随”，有随手记下而非刻意为文之义；所谓“杂”，是指内容广泛，包罗万象，大至社会问题、人生哲理，小至身边琐事，风花雪月，鸟虫宠物，校园风情，学习心得，书籍品评，亲人友人，无可不写。但随笔的重点还是个“感”字，作者要有感而发，哪怕是一点思考、一点感受、一点闪光的意念都可带到文章中去，不摆做文章的架子，保持一种随意漫谈的风格。</p>
-<h3 id="说明性随笔"><a href="#说明性随笔" class="headerlink" title="说明性随笔"></a>说明性随笔</h3><p>黎先耀写人和自然关系的随笔《天之骄子》，着笔于形态各异的自然景观，表达自己热爱大自然的情趣，着力加强人们的生态意识。因此，说明性随笔不同于纯粹的说明文，它看重的是事物中的意趣，带有鉴赏的性质，有时则借物抒怀，另有寄托。模山范水，往往以片断的文字，把大自然的千姿百态准确形象地描绘出来。练习这类随笔，要以精细而敏锐的观察力，捕捉到事物特色的生命，笔调轻灵，不刻意为文。正如王国维所说的那样：“以我观物，故物皆著我之色彩。”</p>
-<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="随手"><a href="#随手" class="headerlink" title="随手"></a>随手</h3><p>随笔中涉及的往往是一些即时发生的事件和看到事件当时产生的想法，那种想法也有点火花闪动似，所以需要及时捕捉，记录下来。因为扔了一段时间之后，您对事件的记忆可能就不那么清晰了，故事就很难说得完整，思想的火花可能也消失不见了。所以要养成随手写的习惯，如果能坚持记教育日记，那么您会发现那其中有很多您可能已经不太记得的事，但是在当时它是如何地让您受到震动。</p>
-<h3 id="随便"><a href="#随便" class="headerlink" title="随便"></a>随便</h3><p>随笔没有什么格式的要求，不需要有什么论点论据,文字也可长可短，如果用200字就能把您想说的话说清楚了，也不一定要凑到1000字.如果您没想好这件事说明了什么，但是这件事却让您有所触动，不说不快，您也不必硬憋着，要找什么理论做依托，您可以把事情写出来，让读者自己去理解。</p>
-<h3 id="随心"><a href="#随心" class="headerlink" title="随心"></a>随心</h3><p>这里讲的随心有两层意思，一是随心所欲，没有太多的限制；二是笔要随脑.文章是笔写出来的，但却是大脑想出来的，所以随笔是笔要随脑。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>随笔要想写好，必须有自己的独到之处，或是切入一个事件的角度不同于以往，或是自己的观点不同于常俗.这一切都需要我们有一双善于发现的眼睛，有一个善于思考的大脑，所以工作之中要注意观察.教师生活于学生之中，我们的工作对象是活生生的人，这就给我们提供了丰富的素材.每个孩子都是一本待读的书，和孩子的每一次倾心的谈话，都可以成为我们写作的素材.工作之余要读一点书，用心去思考一些新的教育理念的合理之处及与教育现实的结合点在哪里，所谓有正确的理念，才会有正确的眼光；有正确的眼光，才能有精彩的发现.</p>
-<p>最重要一点是，要想写好随笔，关键还在于动笔，动笔写了，才能有好的随笔。</p>
-<p>有了题材，如何得到一篇高质量的随笔你可能通常会觉得有话说不出说不好，这是因为尚缺乏理论积累，还不能从理论高度对手中的素材进行加工，整合，形成并表达出自己独到的视角.而这个至关重要的锤炼过程要求我们：</p>
-<p>1．注重积累相关理论.理论积累并无任何捷径，只有平常扎扎实实地研读并作好摘抄,久而久之，再处理起素材来自然会得心应手。</p>
-<p>2．认真解读他人随笔成果.一般报刊杂志上都有一些非常贴近我们工作实际的教学随笔，可以细细地分析一下它们是如何总结提炼得出自己观点的，久而久之，我们也会受到很大启发，感觉豁然开朗。</p>
+<h2 id="更改-gradle位置"><a href="#更改-gradle位置" class="headerlink" title="更改.gradle位置"></a>更改.gradle位置</h2><p>gradle相关文件默认在<code>系统盘:\Users\username\.gradle</code>（仅针对Windows），关闭Android Studio后将文件夹.gradle整个剪切到新路径，再打开Android Studio，在Settings里搜索gradle更改Gradle user home的位置为新路径即可。</p>
+<center><img src="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img2.jpg"></center>
+
+<h2 id="更改安卓虚拟机位置"><a href="#更改安卓虚拟机位置" class="headerlink" title="更改安卓虚拟机位置"></a>更改安卓虚拟机位置</h2><p>安卓虚拟机位置默认在<code>系统盘:\Users\username\.android\avd</code>（仅针对Windows），关闭Android Studio后将文件夹avd整个剪切到新路径，再新增一个系统环境变量，变量名为<code>ANDROID_AVD_HOME</code>，变量值为新路径，再次打开Android Studio创建新虚拟机时会默认创建到新路径下。若avd里已有虚拟机，将.ini文件里的path改为新路径即可。</p>
+<center><img src="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img3.jpg"></center>
 
       
 
@@ -254,7 +239,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
         		</li>
       		
 		</ul>
@@ -310,7 +295,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://izaynpan.github.io/2020/05/31/%E4%BD%95%E4%B8%BA%E9%9A%8F%E7%AC%94/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://izaynpan.github.io/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -324,18 +309,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/31/Hexo%E4%B8%8Byilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hexo下yilia主题添加音乐播放器
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/05/30/Hexo%E4%B8%8Byilia%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E8%83%8C%E6%99%AF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hexo下yilia主题自定义背景</div>
+    <a href="/2021/11/21/Windows10%E5%8F%96%E6%B6%88%E6%96%87%E4%BB%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Windows10取消文件的默认打开方式</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -362,7 +338,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#随笔（文体形式）"><span class="toc-number">1.</span> <span class="toc-text">随笔（文体形式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引证解释"><span class="toc-number">2.</span> <span class="toc-text">引证解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写作要点"><span class="toc-number">3.</span> <span class="toc-text">写作要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类"><span class="toc-number">4.</span> <span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#记叙性随笔"><span class="toc-number">4.1.</span> <span class="toc-text">记叙性随笔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#议论性随笔"><span class="toc-number">4.2.</span> <span class="toc-text">议论性随笔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明性随笔"><span class="toc-number">4.3.</span> <span class="toc-text">说明性随笔</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技巧"><span class="toc-number">5.</span> <span class="toc-text">技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#随手"><span class="toc-number">5.1.</span> <span class="toc-text">随手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随便"><span class="toc-number">5.2.</span> <span class="toc-text">随便</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随心"><span class="toc-number">5.3.</span> <span class="toc-text">随心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">5.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更改-gradle位置"><span class="toc-number">1.</span> <span class="toc-text">更改.gradle位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更改安卓虚拟机位置"><span class="toc-number">2.</span> <span class="toc-text">更改安卓虚拟机位置</span></a></li></ol>
                     </div>
                 </span>
             </div>

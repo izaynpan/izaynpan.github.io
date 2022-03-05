@@ -191,6 +191,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Android Studio一些配置文件夹位置更改" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/">Android Studio一些配置文件夹位置更改</a>
+    </h1>
+  
+
+        
+        <a href="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/" class="archive-article-date">
+  	<time datetime="2022-03-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android Studio默认在系统盘里创建安卓虚拟机、下载gradle相关文件，而AndroidStudio本体和Sdk位置可在安装时更改。以上文件皆会吃掉大量硬盘空间，可更改到系统盘外其他硬盘。</p>
+<center><img src="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img1.jpg"></center>
+
+<h2 id="更改-gradle位置"><a href="#更改-gradle位置" class="headerlink" title="更改.gradle位置"></a>更改.gradle位置</h2><p>gradle相关文件默认在<code>系统盘:\Users\username\.gradle</code>（仅针对Windows），关闭Android Studio后将文件夹.gradle整个剪切到新路径，再打开Android Studio，在Settings里搜索gradle更改Gradle user home的位置为新路径即可。</p>
+<center><img src="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img2.jpg"></center>
+
+<h2 id="更改安卓虚拟机位置"><a href="#更改安卓虚拟机位置" class="headerlink" title="更改安卓虚拟机位置"></a>更改安卓虚拟机位置</h2><p>安卓虚拟机位置默认在<code>系统盘:\Users\username\.android\avd</code>（仅针对Windows），关闭Android Studio后将文件夹avd整个剪切到新路径，再新增一个系统环境变量，变量名为<code>ANDROID_AVD_HOME</code>，变量值为新路径，再次打开Android Studio创建新虚拟机时会默认创建到新路径下。若avd里已有虚拟机，将.ini文件里的path改为新路径即可。</p>
+<center><img src="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img3.jpg"></center>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Windows10取消文件的默认打开方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1014,81 +1091,6 @@
 
 
   
-    <article id="post-更改Spotify-Premium-win端的默认缓存位置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/21/%E6%9B%B4%E6%94%B9Spotify-Premium-win%E7%AB%AF%E7%9A%84%E9%BB%98%E8%AE%A4%E7%BC%93%E5%AD%98%E4%BD%8D%E7%BD%AE/">更改Spotify Premium win端的默认缓存位置</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/21/%E6%9B%B4%E6%94%B9Spotify-Premium-win%E7%AB%AF%E7%9A%84%E9%BB%98%E8%AE%A4%E7%BC%93%E5%AD%98%E4%BD%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-06-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Spotify虽然设置里提供了更改缓存位置的功能，但Premium版还是会保存在默认的c盘下<code>C:\Users\用户名\AppData\Local\Spotify\Data</code>（Premium用户感觉有被冒犯到），重度用户可能一个月就攒了8G(＃°Д°)，所以应该很有必要解决一下（1T的SSD做系统盘请忽视）。</p>
-<p>1．选好缓存的新家，比如<code>D:\Spotify\Data</code>，将原缓存全部搬到新家并对旧家进行拆迁操作(ﾉ*･ω･)ﾉ</p>
-<p>2．打开万能的cmd，输入<code>mklink /J &quot;C:\Users\用户名\AppData\Local\Spotify\Data&quot; &quot;D:\spotify\Data&quot;</code>，成功会提示<code>Junction created for C:\Users\用户名\AppData\Local\Spotify\Data &lt;&lt;===&gt;&gt; D:\spotify\Data</code>之类的巴拉巴拉。</p>
-<p>感觉此时两文件夹就像哆啦A梦的两个四次元口袋，连接着同一个地方，不过本体在新家。</p>
-<p>是不是可以用这种方法把c盘一些很大的文件全部移走？（滑稽被打）</p>
-<p>Windows下mklink命令参考<a href="https://liam.page/2018/12/10/mklink-in-Windows/" target="_blank" rel="noopener">博文</a>。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &gt;</a>
@@ -1103,7 +1105,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 IMZM低吟浅唱
+    		&copy; 2022 IMZM低吟浅唱
     	</div>
       	<div class="footer-right">
       		<!-- <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten -->
