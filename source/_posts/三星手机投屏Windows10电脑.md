@@ -1,5 +1,5 @@
 ---
-title: 三星手机投屏Windows10电脑
+title: 三星手机投屏Windows10电脑(现有dex、flow等更好解决方案待更新)
 tag: win10
 date: 2020-5-25
 ---
