@@ -415,7 +415,8 @@
 <p>2．打开万能的cmd，输入<code>mklink /J &quot;C:\Users\用户名\AppData\Local\Spotify\Data&quot; &quot;D:\spotify\Data&quot;</code>，成功会提示<code>Junction created for C:\Users\用户名\AppData\Local\Spotify\Data &lt;&lt;===&gt;&gt; D:\spotify\Data</code>之类的巴拉巴拉。</p>
 <p>感觉此时两文件夹就像哆啦A梦的两个四次元口袋，连接着同一个地方，不过本体在新家。</p>
 <p>是不是可以用这种方法把c盘一些很大的文件全部移走？（滑稽被打）</p>
-<p>Windows下mklink命令参考<a href="https://liam.page/2018/12/10/mklink-in-Windows/" target="_blank" rel="noopener">博文</a>。</p>
+<p>Windows下mklink命令参考<a href="https://liam.page/2018/12/10/mklink-in-Windows/" target="_blank" rel="noopener">博文1</a>。</p>
+<p>2022-8-8加注：今天复习到操作系统的文件共享知识，瞬间联想到mklink指令，mklink /H即基于索引结点的共享方式（硬链接），mklink /D(/J?) 即基于符号键实现文件共享（软链接）。至于mklink /D和mklink /J的区别见<a href="https://zhuanlan.zhihu.com/p/98101500" target="_blank" rel="noopener">博文2</a>，<a href="https://blog.csdn.net/NotBack/article/details/73604292" target="_blank" rel="noopener">博文3</a>。</p>
 
       
 
@@ -1277,7 +1278,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://blog.xraw.top/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>云谏の净土</a>
+              <a href="https://blog.flyme.tech/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>云谏的小站</a>
             </li>
           
         </ul>
