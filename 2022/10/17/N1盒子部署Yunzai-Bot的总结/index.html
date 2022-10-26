@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://izaynpan.github.io">
-  <title>Hexo博客备份与恢复 | Blog-izaynpan</title>
+  <title>N1盒子部署Yunzai-Bot的总结 | Blog-izaynpan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="思路在仓库里创建新的分支hexo，存放Hexo生成的原始文件，原master分支存放生成的静态网页。备份时上传需备份的文件到hexo分支，恢复时拉取hexo分支到本地。 备份博客内文件或文件夹的内容 .deploy_git: 执行hexo g自动生成，不需拷贝 node_modules: 安装包的目录，执行npm install自动生成，不需拷贝 public: 执行hexo g自动生成，不需拷贝">
+  <meta name="description" content="前言看到一个qq群里有只yunzai机器人，想着绑定下自己的账号查查数据体验一下，结果那只机器人迟迟没反应，于是我想就自己也搭一个吧，正好自己拉个群给朋友们玩玩。于是目光锁定了那台近乎吃灰的斐讯N1盒子。 N1盒子重刷Armbian系统我的N1盒子此前一直安装着Openwrt系统当作一个旁路网关用的，考虑到Openwrt系统精简了不少依赖和指令，为减少后续部署Yunzai-Bot可能会出现的问题，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo博客备份与恢复">
-<meta property="og:url" content="http://izaynpan.github.io/2020/07/13/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/index.html">
+<meta property="og:title" content="N1盒子部署Yunzai-Bot的总结">
+<meta property="og:url" content="http://izaynpan.github.io/2022/10/17/N1%E7%9B%92%E5%AD%90%E9%83%A8%E7%BD%B2Yunzai-Bot%E7%9A%84%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Blog-izaynpan">
-<meta property="og:description" content="思路在仓库里创建新的分支hexo，存放Hexo生成的原始文件，原master分支存放生成的静态网页。备份时上传需备份的文件到hexo分支，恢复时拉取hexo分支到本地。 备份博客内文件或文件夹的内容 .deploy_git: 执行hexo g自动生成，不需拷贝 node_modules: 安装包的目录，执行npm install自动生成，不需拷贝 public: 执行hexo g自动生成，不需拷贝">
+<meta property="og:description" content="前言看到一个qq群里有只yunzai机器人，想着绑定下自己的账号查查数据体验一下，结果那只机器人迟迟没反应，于是我想就自己也搭一个吧，正好自己拉个群给朋友们玩玩。于是目光锁定了那台近乎吃灰的斐讯N1盒子。 N1盒子重刷Armbian系统我的N1盒子此前一直安装着Openwrt系统当作一个旁路网关用的，考虑到Openwrt系统精简了不少依赖和指令，为减少后续部署Yunzai-Bot可能会出现的问题，">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-16T04:18:02.213Z">
+<meta property="article:published_time" content="2022-10-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-26T17:28:54.826Z">
 <meta property="article:author" content="低吟浅唱">
-<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="折腾">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Blog-izaynpan" type="application/atom+xml">
@@ -194,56 +194,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hexo博客备份与恢复" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-N1盒子部署Yunzai-Bot的总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo博客备份与恢复
+      N1盒子部署Yunzai-Bot的总结
     </h1>
   
 
         
-        <a href="/2020/07/13/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" class="archive-article-date">
-  	<time datetime="2020-07-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
+        <a href="/2022/10/17/N1%E7%9B%92%E5%AD%90%E9%83%A8%E7%BD%B2Yunzai-Bot%E7%9A%84%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2022-10-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>在仓库里创建新的分支hexo，存放Hexo生成的原始文件，原master分支存放生成的静态网页。备份时上传需备份的文件到hexo分支，恢复时拉取hexo分支到本地。</p>
-<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><h3 id="博客内文件或文件夹的内容"><a href="#博客内文件或文件夹的内容" class="headerlink" title="博客内文件或文件夹的内容"></a>博客内文件或文件夹的内容</h3><ul>
-<li><code>.deploy_git</code>: 执行<code>hexo g</code>自动生成，不需拷贝</li>
-<li><code>node_modules</code>: 安装包的目录，执行<code>npm install</code>自动生成，不需拷贝</li>
-<li><code>public</code>: 执行<code>hexo g</code>自动生成，不需拷贝</li>
-<li><code>scaffolds</code>: 文章的模板，<strong>需拷贝</strong></li>
-<li><code>source</code>: 包含生成网页需要的源文件和其他资源文件，<strong>需拷贝</strong></li>
-<li><code>themes</code>: 主题，<strong>需拷贝</strong></li>
-<li><code>.gitignore</code>: 在push时忽略的文件，<strong>需拷贝</strong></li>
-<li><code>_config.yml</code>: 站点的配置文件，<strong>需拷贝</strong></li>
-<li><code>db.json</code>: 配置文件，不需拷贝</li>
-<li><code>package.json</code>: 依赖的模块列表，<strong>需拷贝</strong></li>
-<li><code>package-lock.json</code>: 模块安装记录，自动生成，不需拷贝</li>
-</ul>
-<h3 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h3><ol>
-<li>在<code>.gitignore</code>里添加不需拷贝的内容，可以添加不需拷贝的主题（例如自带主题）。</li>
-<li>删除主题文件夹下的<code>.git/</code>，否则无法push（或者新增个备份文件夹<code>themesbk/themename</code>存放主题拷贝，然后push）</li>
-<li>在blog根目录执行命令<code>git init</code>初始化本地仓库</li>
-<li>继续执行命令<code>git checkout -b hexo</code>创建hexo分支，分支名称可改</li>
-<li>执行<code>git remote add origin https://github.com/username/username.github.io.git</code>添加远程仓库</li>
-<li>依次执行命令<code>git add .</code> , <code>git commit -m &quot;something&quot;</code> , <code>git push origin hexo</code></li>
-<li>需备份时只需执行第6步的命令</li>
-</ol>
-<h2 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h2><ol>
-<li>安装git, nodejs</li>
-<li>执行<code>git clone -b hexo https://github.com/username/username.github.io.git blog</code>克隆至blog文件夹（名称可改），clone速度太慢可使用镜像<code>github.com.cnpmjs.org</code>或者给git设置代理</li>
-<li>在blog文件夹内执行<code>npm install</code>安装必要模块（网上部分教程依次执行<code>npm install hexo-cli</code>, <code>npm install</code>, <code>npm install hexo-deployer-git</code>，笔者不清楚是否有必要）</li>
-<li>正常地更新博客然后使用<code>hexo g</code>, <code>hexo s</code>, <code>hexo d</code>就行啦（若deploy提示失败根据提示登录即可）</li>
-</ol>
-<p>感谢以下小伙伴的指路ヾ(≧▽≦*)o：<a href="https://www.jianshu.com/p/57b5a384f234" target="_blank" rel="noopener">指路博客1</a>，<a href="https://mupceet.com/2019/09/backup-hexo-blog/" target="_blank" rel="noopener">指路博客2</a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看到一个qq群里有只yunzai机器人，想着绑定下自己的账号查查数据体验一下，结果那只机器人迟迟没反应，于是我想就自己也搭一个吧，正好自己拉个群给朋友们玩玩。于是目光锁定了那台近乎吃灰的斐讯N1盒子。</p>
+<h2 id="N1盒子重刷Armbian系统"><a href="#N1盒子重刷Armbian系统" class="headerlink" title="N1盒子重刷Armbian系统"></a>N1盒子重刷Armbian系统</h2><p>我的N1盒子此前一直安装着Openwrt系统当作一个旁路网关用的，考虑到Openwrt系统精简了不少依赖和指令，为减少后续部署Yunzai-Bot可能会出现的问题，最终选择将N1重刷成Armbian系统。经实测Openwrt重刷Armbian不需刷回到之前的安卓系统，直接覆盖写入emmc即可。 该注意的地方这篇<a href="https://yuerblog.cc/2019/10/23/%E6%96%90%E8%AE%AFn1-%E5%AE%8C%E7%BE%8E%E5%88%B7%E6%9C%BAarmbian%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">博客</a>都提到了，感谢那位博主帮我避了那么多坑。</p>
+<h2 id="安装Docker遇到的问题"><a href="#安装Docker遇到的问题" class="headerlink" title="安装Docker遇到的问题"></a>安装Docker遇到的问题</h2><p>安装Docker：第一次尝试使用官方的安装脚本<code>get-docker.sh</code>，但提示我Debian版本(armbian5.77, debian9)过低，建议使用高版本进行安装，不出意外地安装失败了，于是使用 <code>apt install docker-ce</code>进行安装，执行<code>docker --version</code>结果<code>Docker version 19.03.15, build 99e3ed8</code>，安装成功。</p>
+<p>安装docker-compose的坑：开始时看一些帖子推荐使用pip安装docker-compose，我便照做，结果安装过程中疯狂出现依赖问题，踩坑😐。继续查找资料有帖子说尝试换用高版本python，于是下载了python3.9的源码进行编译升级(<a href="https://my.oschina.net/ranvane/blog/5559922" target="_blank" rel="noopener">参考</a>)，继续使用pip安装，看似安装成功了，但无法使用，踩坑😐。最后选择直接下载官方的可执行文件，参考了这个<a href="https://tataramoriko.com/index.php/wkyuu/149.html" target="_blank" rel="noopener">帖子</a>安装1.29.2版本，下载的docker-compose可执行文件才9byte，显然是有问题的，踩坑😐。执行<code>uname -s</code>结果<code>Linux</code>，执行<code>uname -m</code>结果<code>aarch64</code>，上<a href="https://github.com/docker/compose/releases" target="_blank" rel="noopener">官方GitHub发行页面</a>才发现1.29.2版本没有linux-aarch64的版本，而目前最新版2.12.0支持，于是从<a href="https://docs.docker.com/compose/install/other/" target="_blank" rel="noopener">官方文档</a>上拷贝了<code>curl -SL https://github.com/docker/compose/releases/download/v2.12.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose</code>，下载成功。设置下权限<code>chmod +x /usr/local/bin/docker-compose</code>，执行<code>docker-compose --version</code>结果<code>Docker Compose version v2.11.2</code>，安装成功。（以后装啥之前都尽量上官方文档瞅一眼，装2.12.0的时候甚至还踩了个坑，<code>v2.12.0</code>少输了前面的<code>v</code>，因为下载低版本的链接是没有那个<code>v</code>的，然后就下载失败了😐）</p>
+<h2 id="部署过程中遇到的问题"><a href="#部署过程中遇到的问题" class="headerlink" title="部署过程中遇到的问题"></a>部署过程中遇到的问题</h2><p>第一次尝试手动部署，yunzai-bot容器里出现了redis disconnted的问题，提供的解决方法是启动redis，但redis在yunzai-redis容器里是已经启动的状态。后来改用一键部署脚本部署并没出现问题。开始时怀疑是私自改了redis文件夹在宿主机的位置造成的，但查看一键部署脚本的<a href="https://jihulab.com/Xm798/Yunzai-Bot-Docs/-/raw/master/scripts/install_v3.sh" target="_blank" rel="noopener">内容</a>，发现了<code>sed -i &#39;s|127.0.0.1|redis|g&#39; ./yunzai/config/redis.yaml</code>这行命令，将宿主机<code>redis.yaml</code>这个文件里的<code>host: 127.0.0.1</code>改成了<code>host: redis</code>，以便从外部访问，我猜原因应该就出在这。</p>
+<h2 id="使用Yunzai-Bot遇到的一些问题（持续更新）"><a href="#使用Yunzai-Bot遇到的一些问题（持续更新）" class="headerlink" title="使用Yunzai-Bot遇到的一些问题（持续更新）"></a>使用Yunzai-Bot遇到的一些问题（持续更新）</h2><p>更换机器人qq号：<code>./yunzai/config/qq.yaml</code>里更改</p>
+<p>登录问题.<a href="https://github.com/Le-niao/Yunzai-Bot/issues/679" target="_blank" rel="noopener">Yunzai-Bot#679</a> + <a href="https://docs.qq.com/doc/DT25kQ0x3VVlyc0Jz" target="_blank" rel="noopener">云崽机器人总结问题六</a></p>
+<p>自带的三个插件加载错误：重新下载文件解决.<a href="https://github.com/SirlyDreamer/Yunzai-Bot/issues/17" target="_blank" rel="noopener">Yunzai-Bot#17</a></p>
+<p>原神语音合成插件错误：原神语音api关闭.<a href="https://github.com/yhArcadia/YunzaiJsPlugins/issues/3" target="_blank" rel="noopener">YunzaiJsPlugins#3</a> + <a href="https://docs.qq.com/doc/DT25kQ0x3VVlyc0Jz" target="_blank" rel="noopener">云崽机器人总结问题九</a></p>
+<p>逍遥插件的签到问题.<a href="https://github.com/Le-niao/Yunzai-Bot/issues/729" target="_blank" rel="noopener">Yunzai-Bot#729</a> + 搭配云崽自身的配置文件（或者<code>#开启/关闭签到</code>）.<a href="https://github.com/Le-niao/Yunzai-Bot/issues/542" target="_blank" rel="noopener">Yunzai-Bot#542</a></p>
+<p>逍遥插件的图鉴问题.<a href="https://github.com/ctrlcvs/xiaoyao-cvs-plugin/issues/16" target="_blank" rel="noopener">xiaoyao-cvs-plugin#16</a></p>
+<p>Redis容器AOF数据持久化问题.<a href="https://github.com/SirlyDreamer/Yunzai-Bot/issues/23" target="_blank" rel="noopener">解决方案</a></p>
+<p>部分插件的功能绑定cookie后需要<code>#重启</code>才能生效.<a href="https://github.com/Le-niao/Yunzai-Bot/issues/569" target="_blank" rel="noopener">Yunzai-Bot#569</a></p>
+<p>更新面版失败问题：更换请求url为国内中转地址.<a href="https://github.com/yoimiya-kokomi/miao-plugin/issues/63" target="_blank" rel="noopener">miao-plugin#63</a></p>
+<p>PS：之前用的Openwrt整合固件貌似有后门😑，详见<a href="https://muguang.me/guff/2801.html" target="_blank" rel="noopener">帖子</a>。现在开源项目都要留个心眼，非开源项目更要慎用了。</p>
+<p>2022-10-23更新：N1的8G储存几乎被吃完了，继续添加其他插件是不太可能了，赶着双十一优惠，购入了一台腾讯云轻量应用服务器，2核4G、6M带宽1000G月流量、60G固态盘，首年100RMB。直接使用时雨大佬的一键部署<a href="https://gitee.com/TimeRainStarSky/TRSS_Yunzai" target="_blank" rel="noopener">脚本</a>，部署在这台服务器上，十几分钟就解决战斗了😂。鉴于还是有全局翻墙的需求，大概会在N1的Docker里部署个Openwrt。</p>
 
       
 
@@ -257,7 +243,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">折腾</a>
         		</li>
       		
 		</ul>
@@ -313,7 +299,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://izaynpan.github.io/2020/07/13/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://izaynpan.github.io/2022/10/17/N1%E7%9B%92%E5%AD%90%E9%83%A8%E7%BD%B2Yunzai-Bot%E7%9A%84%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -327,18 +313,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/08/19/%E8%AF%88%E5%B0%B8%EF%BC%81/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/10/22/Windows10%E5%B0%86%E7%94%B5%E8%84%91%E7%9A%84%E4%BB%A3%E7%90%86%E7%BD%91%E7%BB%9C%E4%BB%A5WIFI%E7%83%AD%E7%82%B9%E7%9A%84%E6%96%B9%E5%BC%8F%E5%85%B1%E4%BA%AB/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          诈尸！
+          Windows10将电脑的代理网络以WIFI热点的方式共享
         
       </div>
     </a>
   
   
-    <a href="/2020/06/28/Windows10%E5%8D%95%E7%8B%AC%E7%BB%99%E7%A8%8B%E5%BA%8F%E8%AE%BE%E7%BD%AEDPI%E7%BC%A9%E6%94%BE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Windows10单独给程序设置DPI缩放</div>
+    <a href="/2022/07/31/PotPlayer%E5%BA%95%E5%99%AA%E7%9A%84%E4%B8%80%E7%A7%8D%E5%8F%AF%E8%83%BD%E8%A7%A3%E5%86%B3%E7%9A%84%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PotPlayer底噪的一种可能解决的方法</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -365,7 +351,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#备份"><span class="toc-number">2.</span> <span class="toc-text">备份</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#博客内文件或文件夹的内容"><span class="toc-number">2.1.</span> <span class="toc-text">博客内文件或文件夹的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体操作"><span class="toc-number">2.2.</span> <span class="toc-text">具体操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#恢复"><span class="toc-number">3.</span> <span class="toc-text">恢复</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#N1盒子重刷Armbian系统"><span class="toc-number">2.</span> <span class="toc-text">N1盒子重刷Armbian系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker遇到的问题"><span class="toc-number">3.</span> <span class="toc-text">安装Docker遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署过程中遇到的问题"><span class="toc-number">4.</span> <span class="toc-text">部署过程中遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Yunzai-Bot遇到的一些问题（持续更新）"><span class="toc-number">5.</span> <span class="toc-text">使用Yunzai-Bot遇到的一些问题（持续更新）</span></a></li></ol>
                     </div>
                 </span>
             </div>
