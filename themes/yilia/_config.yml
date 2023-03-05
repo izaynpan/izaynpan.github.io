@@ -18,10 +18,10 @@ subnav:
   #segmentfault: "#"
   bilibili: "https://space.bilibili.com/13801413"
   #acfun: "#"
-  mail: "mailto:izaynpan@outlook.com"
+  mail: "mailto:izaynpan@qq.com"
   #facebook: "#"
   #google: "#"
-  twitter: "https://twitter.com/izaynpan"
+  #twitter: "https://twitter.com/izaynpan"
   #linkedin: "#"
 
 rss: /atom.xml
@@ -132,7 +132,7 @@ smart_menu:
   aboutme: '关于我'
 
 friends:
-  云谏の净土: https://blog.xraw.top/
+  长生: https://yunjn.github.io/
   #友情链接2: http://localhost:4000/
   #友情链接3: http://localhost:4000/
   #友情链接4: http://localhost:4000/

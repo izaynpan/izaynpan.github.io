@@ -4,6 +4,8 @@ tag: others
 date: 2020-5-28
 ---
 
+***2023-3-3补充：目前有关msoffice的问题一律建议使用[Office Tool Plus](https://otp.landian.vip/zh-cn/)工具解决。***
+
 > 本篇只适用与出厂预装`Office 家庭和学生版`的新机器由于某些玄学原因导致激活失败的情况
 
 ## 还能抢救的情况
