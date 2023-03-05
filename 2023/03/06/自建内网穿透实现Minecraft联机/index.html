@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://izaynpan.github.io">
-  <title>诈尸！ | Blog-izaynpan</title>
+  <title>自建内网穿透实现Minecraft联机 | Blog-izaynpan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="突然出现！（滑稽流汗） 来回忆一下更新博客的流程（滑稽被打） 希望考试能过~">
+  <meta name="description" content="前言跟朋友联机Minecraft我尝试过两种方法：樱花穿透、Essential模组（这两种联机方法我仍然强力推荐）。不巧最近这两种方法在我目前的网络环境下都不稳定，频繁掉线，正巧手中有一台云服务器，这台服务器此前一直是挂着云崽（详情可见我之前的博客），对带宽和处理器的消耗很小，再运行个内网穿透服务完全没问题（还能帮忙消耗1000GB的月流量包，不然浪费了😉）。工具选用frp(项目页面)。  原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="诈尸！">
-<meta property="og:url" content="http://izaynpan.github.io/2020/08/19/%E8%AF%88%E5%B0%B8%EF%BC%81/index.html">
+<meta property="og:title" content="自建内网穿透实现Minecraft联机">
+<meta property="og:url" content="http://izaynpan.github.io/2023/03/06/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0Minecraft%E8%81%94%E6%9C%BA/index.html">
 <meta property="og:site_name" content="Blog-izaynpan">
-<meta property="og:description" content="突然出现！（滑稽流汗） 来回忆一下更新博客的流程（滑稽被打） 希望考试能过~">
+<meta property="og:description" content="前言跟朋友联机Minecraft我尝试过两种方法：樱花穿透、Essential模组（这两种联机方法我仍然强力推荐）。不巧最近这两种方法在我目前的网络环境下都不稳定，频繁掉线，正巧手中有一台云服务器，这台服务器此前一直是挂着云崽（详情可见我之前的博客），对带宽和处理器的消耗很小，再运行个内网穿透服务完全没问题（还能帮忙消耗1000GB的月流量包，不然浪费了😉）。工具选用frp(项目页面)。  原理">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-08-19T03:38:53.311Z">
+<meta property="og:image" content="http://izaynpan.github.io/2023/03/06/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0Minecraft%E8%81%94%E6%9C%BA/image.png">
+<meta property="article:published_time" content="2023-03-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-05T17:09:16.180Z">
 <meta property="article:author" content="低吟浅唱">
-<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="服务器">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://izaynpan.github.io/2023/03/06/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0Minecraft%E8%81%94%E6%9C%BA/image.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog-izaynpan" type="application/atom+xml">
   
@@ -190,29 +192,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-诈尸！" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-自建内网穿透实现Minecraft联机" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      诈尸！
+      自建内网穿透实现Minecraft联机
     </h1>
   
 
         
-        <a href="/2020/08/19/%E8%AF%88%E5%B0%B8%EF%BC%81/" class="archive-article-date">
-  	<time datetime="2020-08-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
+        <a href="/2023/03/06/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0Minecraft%E8%81%94%E6%9C%BA/" class="archive-article-date">
+  	<time datetime="2023-03-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>突然出现！（滑稽流汗）</p>
-<p>来回忆一下更新博客的流程（滑稽被打）</p>
-<p>希望考试能过~</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>跟朋友联机Minecraft我尝试过两种方法：<a href="https://www.natfrp.com/" target="_blank" rel="noopener"><strong>樱花穿透</strong></a>、<a href="https://essential.gg/" target="_blank" rel="noopener"><strong>Essential模组</strong></a>（这两种联机方法我仍然强力推荐）。不巧最近这两种方法在我目前的网络环境下都不稳定，频繁掉线，正巧手中有一台云服务器，这台服务器此前一直是挂着云崽（详情可见我之前的<a href="https://opano.top/2022/10/17/N1%E7%9B%92%E5%AD%90%E9%83%A8%E7%BD%B2Yunzai-Bot%E7%9A%84%E6%80%BB%E7%BB%93/" target="_blank" rel="noopener">博客</a>），对带宽和处理器的消耗很小，再运行个内网穿透服务完全没问题（还能帮忙消耗1000GB的月流量包，不然浪费了😉）。工具选用<strong>frp</strong>(<a href="https://github.com/fatedier/frp" target="_blank" rel="noopener">项目页面</a>)。</p>
+<blockquote>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>frp 主要由 <strong>客户端(frpc)</strong> 和 <strong>服务端(frps)</strong> 组成，服务端通常部署在具有公网 IP 的机器上，客户端通常部署在需要穿透的内网服务所在的机器上。</p>
+<p>内网服务由于没有公网 IP，不能被非局域网内的其他用户访问。</p>
+<p>用户通过访问服务端的 frps，由 frp 负责根据请求的端口或其他信息将请求路由到对应的内网机器，从而实现通信。</p>
+<p><em>[摘自frp<a href="https://gofrp.org/docs/concepts/" target="_blank" rel="noopener">官方文档</a>]</em></p>
+</blockquote>
+<h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p><strong>1.下载frp</strong></p>
+<p><a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">[下载页面]</a>首先在Terminal里使用<code>uname -s</code>和<code>uname -u</code>来确定服务器的系统和架构，我的云服务是Linux x86_64，就下载后缀为linux_amd64的版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp&#x2F;releases&#x2F;download&#x2F;v0.47.0&#x2F;frp_0.47.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.编辑配置文件</strong></p>
+<p>解压后，编辑<strong>frps.ini</strong>，内容为下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">token</span> = 设置一个客户端连接密码</span><br></pre></td></tr></table></figure>
+
+<p><code>[common]</code> 是固定名称的段落，用于配置通用参数。</p>
+<p><code>bind_port</code>是服务器监听端口，默认7000，用来接收客户端的连接。</p>
+<p><code>token</code>用来权限验证，增加一点安全性。</p>
+<p>至于有些教程里出现了关于dashboard的配置，如果不使用网页查看frp的状态以及统计信息展示的话，可以不配置。</p>
+<h2 id="客户端（处于内网的机器）"><a href="#客户端（处于内网的机器）" class="headerlink" title="客户端（处于内网的机器）"></a>客户端（处于内网的机器）</h2><p><strong>1.下载frp</strong></p>
+<p><a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">[下载页面]</a>直接根据后缀名下载就行，windows、linux、darwin(MacOS)。</p>
+<p><strong>2.编辑配置文件</strong></p>
+<p>解压后，编辑<strong>frpc.ini</strong>，内容为下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = 服务器的公网ip地址</span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">token</span> = 与服务器配置文件里的相同</span><br><span class="line"></span><br><span class="line"><span class="section">[minecraft]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">25565</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">25565</span></span><br></pre></td></tr></table></figure>
+
+<p><code>server_addr</code>是服务端的公网ip地址，如果有域名解析到服务器也可以直接填域名。</p>
+<p><code>server_port</code>与服务器端配置的<code>bind_port</code>保持相同即可。</p>
+<p><code>[minecraft]</code>是一个标志，可以随意命名。</p>
+<p><code>type</code>一定是tcp。</p>
+<p><code>local_ip</code> 是需要被代理的本地服务的 IP 地址，默认127.0.0.1就行。</p>
+<p> <code>local_port</code> 是本地需要暴露到公网的服务地址和端口，Minecraft里安装<a href="https://www.mcmod.cn/class/4498.html" target="_blank" rel="noopener"><strong>联机模组</strong></a>后局域网一般开放25565端口（建议安装联机模组，可自定义开放端口，否则是随机分配端口，每次都要修改配置文件十分麻烦）。</p>
+<p><code>remote_port</code> 表示在 frp 服务端监听的端口，访问此端口的流量将会被转发到本地服务对应的端口（即<code>local_ip</code>:<code>local_port</code>），朋友在服务器地址栏里输入<code>server_addr</code>:<code>remote_port</code>便能加入游戏，建议25565。</p>
+<h2 id="云服务器开放防火墙-安全组"><a href="#云服务器开放防火墙-安全组" class="headerlink" title="云服务器开放防火墙/安全组"></a>云服务器开放防火墙/安全组</h2><p>以腾讯云为例，在服务器实例的管理页面会有防火墙一栏，记得放行7000和25565两个端口。</p>
+<center><img src="/2023/03/06/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0Minecraft%E8%81%94%E6%9C%BA/image.png"></center>
+
+<h2 id="开始联机"><a href="#开始联机" class="headerlink" title="开始联机"></a>开始联机</h2><p><strong>1.服务器端启动frp服务</strong></p>
+<p>在frp文件夹内<code>./frps -c ./frps.ini</code>启动服务，<code>ctrl+c</code>结束服务。</p>
+<p>(frp官方文档建议长期运行时，使用systemd控制frps及配置开机自启。<a href="https://gofrp.org/docs/setup/systemd/" target="_blank" rel="noopener">教程</a>)</p>
+<p><strong>2.客户端启动frp服务</strong></p>
+<p>在frp的文件夹里新建个bat文件，内容为<code>frpc -c frpc.ini</code>，双击运行启动服务，关闭窗口结束服务。</p>
+<p><strong>3.游戏内操作</strong></p>
+<p>房主开放局域网游戏后，朋友在服务器地址栏里输入<code>server_addr</code>:<code>remote_port</code>(例如1.111.222.233:25565)便能加入游戏，享受稳定的联机游戏体验吧~</p>
+<p><strong>温馨提示</strong>：注意自己云服务器的流量消耗，建议选择大的包月流量包或者比较便宜的按量付费，毕竟Minecraft联机真的挺吃流量的，特别是开图的时候，我自己使用下来，11个小时吃了快5GB，我的云崽机器人半个月也才吃300MB。</p>
 
       
 
@@ -226,7 +268,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
         		</li>
       		
 		</ul>
@@ -282,7 +324,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://izaynpan.github.io/2020/08/19/%E8%AF%88%E5%B0%B8%EF%BC%81/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://izaynpan.github.io/2023/03/06/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0Minecraft%E8%81%94%E6%9C%BA/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +338,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/11/14/PR%E5%A4%9A%E4%B8%AA%E5%88%87%E7%89%87%E7%B4%A0%E6%9D%90%E5%BF%AB%E9%80%9F%E5%B7%A6%E5%AF%B9%E9%BD%90%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          PR多个切片素材快速左对齐方法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/13/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hexo博客备份与恢复</div>
+    <a href="/2022/10/24/python%E5%AF%BC%E5%8C%85apscheduler%E5%A4%B1%E8%B4%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python导包apscheduler失败</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -334,7 +367,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器端"><span class="toc-number">3.</span> <span class="toc-text">服务器端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端（处于内网的机器）"><span class="toc-number">4.</span> <span class="toc-text">客户端（处于内网的机器）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#云服务器开放防火墙-安全组"><span class="toc-number">5.</span> <span class="toc-text">云服务器开放防火墙&#x2F;安全组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始联机"><span class="toc-number">6.</span> <span class="toc-text">开始联机</span></a></li></ol>
                     </div>
                 </span>
             </div>

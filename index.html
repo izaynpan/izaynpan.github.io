@@ -187,6 +187,118 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-自建内网穿透实现Minecraft联机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/06/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0Minecraft%E8%81%94%E6%9C%BA/">自建内网穿透实现Minecraft联机</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/06/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0Minecraft%E8%81%94%E6%9C%BA/" class="archive-article-date">
+  	<time datetime="2023-03-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>跟朋友联机Minecraft我尝试过两种方法：<a href="https://www.natfrp.com/" target="_blank" rel="noopener"><strong>樱花穿透</strong></a>、<a href="https://essential.gg/" target="_blank" rel="noopener"><strong>Essential模组</strong></a>（这两种联机方法我仍然强力推荐）。不巧最近这两种方法在我目前的网络环境下都不稳定，频繁掉线，正巧手中有一台云服务器，这台服务器此前一直是挂着云崽（详情可见我之前的<a href="https://opano.top/2022/10/17/N1%E7%9B%92%E5%AD%90%E9%83%A8%E7%BD%B2Yunzai-Bot%E7%9A%84%E6%80%BB%E7%BB%93/" target="_blank" rel="noopener">博客</a>），对带宽和处理器的消耗很小，再运行个内网穿透服务完全没问题（还能帮忙消耗1000GB的月流量包，不然浪费了😉）。工具选用<strong>frp</strong>(<a href="https://github.com/fatedier/frp" target="_blank" rel="noopener">项目页面</a>)。</p>
+<blockquote>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>frp 主要由 <strong>客户端(frpc)</strong> 和 <strong>服务端(frps)</strong> 组成，服务端通常部署在具有公网 IP 的机器上，客户端通常部署在需要穿透的内网服务所在的机器上。</p>
+<p>内网服务由于没有公网 IP，不能被非局域网内的其他用户访问。</p>
+<p>用户通过访问服务端的 frps，由 frp 负责根据请求的端口或其他信息将请求路由到对应的内网机器，从而实现通信。</p>
+<p><em>[摘自frp<a href="https://gofrp.org/docs/concepts/" target="_blank" rel="noopener">官方文档</a>]</em></p>
+</blockquote>
+<h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p><strong>1.下载frp</strong></p>
+<p><a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">[下载页面]</a>首先在Terminal里使用<code>uname -s</code>和<code>uname -u</code>来确定服务器的系统和架构，我的云服务是Linux x86_64，就下载后缀为linux_amd64的版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp&#x2F;releases&#x2F;download&#x2F;v0.47.0&#x2F;frp_0.47.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.编辑配置文件</strong></p>
+<p>解压后，编辑<strong>frps.ini</strong>，内容为下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">token</span> = 设置一个客户端连接密码</span><br></pre></td></tr></table></figure>
+
+<p><code>[common]</code> 是固定名称的段落，用于配置通用参数。</p>
+<p><code>bind_port</code>是服务器监听端口，默认7000，用来接收客户端的连接。</p>
+<p><code>token</code>用来权限验证，增加一点安全性。</p>
+<p>至于有些教程里出现了关于dashboard的配置，如果不使用网页查看frp的状态以及统计信息展示的话，可以不配置。</p>
+<h2 id="客户端（处于内网的机器）"><a href="#客户端（处于内网的机器）" class="headerlink" title="客户端（处于内网的机器）"></a>客户端（处于内网的机器）</h2><p><strong>1.下载frp</strong></p>
+<p><a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">[下载页面]</a>直接根据后缀名下载就行，windows、linux、darwin(MacOS)。</p>
+<p><strong>2.编辑配置文件</strong></p>
+<p>解压后，编辑<strong>frpc.ini</strong>，内容为下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = 服务器的公网ip地址</span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">token</span> = 与服务器配置文件里的相同</span><br><span class="line"></span><br><span class="line"><span class="section">[minecraft]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">25565</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">25565</span></span><br></pre></td></tr></table></figure>
+
+<p><code>server_addr</code>是服务端的公网ip地址，如果有域名解析到服务器也可以直接填域名。</p>
+<p><code>server_port</code>与服务器端配置的<code>bind_port</code>保持相同即可。</p>
+<p><code>[minecraft]</code>是一个标志，可以随意命名。</p>
+<p><code>type</code>一定是tcp。</p>
+<p><code>local_ip</code> 是需要被代理的本地服务的 IP 地址，默认127.0.0.1就行。</p>
+<p> <code>local_port</code> 是本地需要暴露到公网的服务地址和端口，Minecraft里安装<a href="https://www.mcmod.cn/class/4498.html" target="_blank" rel="noopener"><strong>联机模组</strong></a>后局域网一般开放25565端口（建议安装联机模组，可自定义开放端口，否则是随机分配端口，每次都要修改配置文件十分麻烦）。</p>
+<p><code>remote_port</code> 表示在 frp 服务端监听的端口，访问此端口的流量将会被转发到本地服务对应的端口（即<code>local_ip</code>:<code>local_port</code>），朋友在服务器地址栏里输入<code>server_addr</code>:<code>remote_port</code>便能加入游戏，建议25565。</p>
+<h2 id="云服务器开放防火墙-安全组"><a href="#云服务器开放防火墙-安全组" class="headerlink" title="云服务器开放防火墙/安全组"></a>云服务器开放防火墙/安全组</h2><p>以腾讯云为例，在服务器实例的管理页面会有防火墙一栏，记得放行7000和25565两个端口。</p>
+<center><img src="/2023/03/06/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0Minecraft%E8%81%94%E6%9C%BA/image.png"></center>
+
+<h2 id="开始联机"><a href="#开始联机" class="headerlink" title="开始联机"></a>开始联机</h2><p><strong>1.服务器端启动frp服务</strong></p>
+<p>在frp文件夹内<code>./frps -c ./frps.ini</code>启动服务，<code>ctrl+c</code>结束服务。</p>
+<p>(frp官方文档建议长期运行时，使用systemd控制frps及配置开机自启。<a href="https://gofrp.org/docs/setup/systemd/" target="_blank" rel="noopener">教程</a>)</p>
+<p><strong>2.客户端启动frp服务</strong></p>
+<p>在frp的文件夹里新建个bat文件，内容为<code>frpc -c frpc.ini</code>，双击运行启动服务，关闭窗口结束服务。</p>
+<p><strong>3.游戏内操作</strong></p>
+<p>房主开放局域网游戏后，朋友在服务器地址栏里输入<code>server_addr</code>:<code>remote_port</code>(例如1.111.222.233:25565)便能加入游戏，享受稳定的联机游戏体验吧~</p>
+<p><strong>温馨提示</strong>：注意自己云服务器的流量消耗，建议选择大的包月流量包或者比较便宜的按量付费，毕竟Minecraft联机真的挺吃流量的，特别是开图的时候，我自己使用下来，11个小时吃了快5GB，我的云崽机器人半个月也才吃300MB。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python导包apscheduler失败" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -358,7 +470,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看到一个qq群里有只yunzai机器人，想着绑定下自己的账号查查数据体验一下，结果那只机器人迟迟没反应，于是我想就自己也搭一个吧，正好自己拉个群给朋友们玩玩。于是目光锁定了那台近乎吃灰的斐讯N1盒子。</p>
 <h2 id="N1盒子重刷Armbian系统"><a href="#N1盒子重刷Armbian系统" class="headerlink" title="N1盒子重刷Armbian系统"></a>N1盒子重刷Armbian系统</h2><p>我的N1盒子此前一直安装着Openwrt系统当作一个旁路网关用的，考虑到Openwrt系统精简了不少依赖和指令，为减少后续部署Yunzai-Bot可能会出现的问题，最终选择将N1重刷成Armbian系统。经实测Openwrt重刷Armbian不需刷回到之前的安卓系统，直接覆盖写入emmc即可。 该注意的地方这篇<a href="https://yuerblog.cc/2019/10/23/%E6%96%90%E8%AE%AFn1-%E5%AE%8C%E7%BE%8E%E5%88%B7%E6%9C%BAarmbian%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">博客</a>都提到了，感谢那位博主帮我避了那么多坑。</p>
 <h2 id="安装Docker遇到的问题"><a href="#安装Docker遇到的问题" class="headerlink" title="安装Docker遇到的问题"></a>安装Docker遇到的问题</h2><p>安装Docker：第一次尝试使用官方的安装脚本<code>get-docker.sh</code>，但提示我Debian版本(armbian5.77, debian9)过低，建议使用高版本进行安装，不出意外地安装失败了，于是使用 <code>apt install docker-ce</code>进行安装，执行<code>docker --version</code>结果<code>Docker version 19.03.15, build 99e3ed8</code>，安装成功。</p>
-<p>安装docker-compose的坑：开始时看一些帖子推荐使用pip安装docker-compose，我便照做，结果安装过程中疯狂出现依赖问题，踩坑😐。继续查找资料有帖子说尝试换用高版本python，于是下载了python3.9的源码进行编译升级(<a href="https://my.oschina.net/ranvane/blog/5559922" target="_blank" rel="noopener">参考</a>)，继续使用pip安装，看似安装成功了，但无法使用，踩坑😐。最后选择直接下载官方的可执行文件，参考了这个<a href="https://tataramoriko.com/index.php/wkyuu/149.html" target="_blank" rel="noopener">帖子</a>安装1.29.2版本，下载的docker-compose可执行文件才9byte，显然是有问题的，踩坑😐。执行<code>uname -s</code>结果<code>Linux</code>，执行<code>uname -m</code>结果<code>aarch64</code>，上<a href="https://github.com/docker/compose/releases" target="_blank" rel="noopener">官方GitHub发行页面</a>才发现1.29.2版本没有linux-aarch64的版本，而目前最新版2.12.0支持，于是从<a href="https://docs.docker.com/compose/install/other/" target="_blank" rel="noopener">官方文档</a>上拷贝了<code>curl -SL https://github.com/docker/compose/releases/download/v2.12.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose</code>，下载成功。设置下权限<code>chmod +x /usr/local/bin/docker-compose</code>，执行<code>docker-compose --version</code>结果<code>Docker Compose version v2.11.2</code>，安装成功。（以后装啥之前都尽量上官方文档瞅一眼，装2.12.0的时候甚至还踩了个坑，<code>v2.12.0</code>少输了前面的<code>v</code>，因为下载低版本的链接是没有那个<code>v</code>的，然后就下载失败了😐）</p>
+<p>安装docker-compose的坑：开始时看一些帖子推荐使用pip安装docker-compose，我便照做，结果安装过程中疯狂出现依赖问题，踩坑😐。继续查找资料有帖子说尝试换用高版本python，于是下载了python3.9的源码进行编译升级(<a href="https://my.oschina.net/ranvane/blog/5559922" target="_blank" rel="noopener">参考</a>)，继续使用pip安装，看似安装成功了，但无法使用，踩坑😐。最后选择直接下载官方的可执行文件，参考了这个<a href="https://tataramoriko.com/index.php/wkyuu/149.html" target="_blank" rel="noopener">帖子</a>安装1.29.2版本，下载的docker-compose可执行文件才9byte，显然是有问题的，踩坑😐。执行<code>uname -s</code>结果<code>Linux</code>，执行<code>uname -m</code>结果<code>aarch64</code>，上<a href="https://github.com/docker/compose/releases" target="_blank" rel="noopener">官方GitHub发行页面</a>才发现1.29.2版本没有linux-aarch64的版本，而目前最新版2.12.0支持，于是从<a href="https://docs.docker.com/compose/install/other/" target="_blank" rel="noopener">官方文档</a>上拷贝了<code>curl -SL https://github.com/docker/compose/releases/download/v2.12.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose</code>，下载成功。设置下权限<code>chmod +x /usr/local/bin/docker-compose</code>，执行<code>docker-compose --version</code>结果<code>Docker Compose version v2.11.2</code>，安装成功。（以后装啥之前都尽量上官方文档瞅一眼，装2.12.0的时候甚至还踩了个坑，<code>v2.12.0</code>少输了前面的<code>v</code>，因为下载低版本的链接是没有那个<code>v</code>的，然后就下载失败了😐）(<strong>2023-3-3补充：直接在<code>Assets</code>里右键复制链接地址问题就解决了。。</strong>)</p>
 <h2 id="部署过程中遇到的问题"><a href="#部署过程中遇到的问题" class="headerlink" title="部署过程中遇到的问题"></a>部署过程中遇到的问题</h2><p>第一次尝试手动部署，yunzai-bot容器里出现了redis disconnted的问题，提供的解决方法是启动redis，但redis在yunzai-redis容器里是已经启动的状态。后来改用一键部署脚本部署并没出现问题。开始时怀疑是私自改了redis文件夹在宿主机的位置造成的，但查看一键部署脚本的<a href="https://jihulab.com/Xm798/Yunzai-Bot-Docs/-/raw/master/scripts/install_v3.sh" target="_blank" rel="noopener">内容</a>，发现了<code>sed -i &#39;s|127.0.0.1|redis|g&#39; ./yunzai/config/redis.yaml</code>这行命令，将宿主机<code>redis.yaml</code>这个文件里的<code>host: 127.0.0.1</code>改成了<code>host: redis</code>，以便从外部访问，我猜原因应该就出在这。</p>
 <h2 id="使用Yunzai-Bot遇到的一些问题（持续更新）"><a href="#使用Yunzai-Bot遇到的一些问题（持续更新）" class="headerlink" title="使用Yunzai-Bot遇到的一些问题（持续更新）"></a>使用Yunzai-Bot遇到的一些问题（持续更新）</h2><p>更换机器人qq号：<code>./yunzai/config/qq.yaml</code>里更改</p>
 <p>登录问题.<a href="https://github.com/Le-niao/Yunzai-Bot/issues/679" target="_blank" rel="noopener">Yunzai-Bot#679</a> + <a href="https://docs.qq.com/doc/DT25kQ0x3VVlyc0Jz" target="_blank" rel="noopener">云崽机器人总结问题六</a></p>
@@ -914,78 +1026,6 @@
 
 
   
-    <article id="post-诈尸！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/19/%E8%AF%88%E5%B0%B8%EF%BC%81/">诈尸！</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/19/%E8%AF%88%E5%B0%B8%EF%BC%81/" class="archive-article-date">
-  	<time datetime="2020-08-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>突然出现！（滑稽流汗）</p>
-<p>来回忆一下更新博客的流程（滑稽被打）</p>
-<p>希望考试能过~</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &gt;</a>
@@ -1000,7 +1040,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 低吟浅唱
+    		&copy; 2020-2023 低吟浅唱
     	</div>
       	<div class="footer-right">
       		<!-- <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten -->
@@ -1168,6 +1208,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -1218,7 +1262,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://blog.flyme.tech/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>云谏的小站</a>
+              <a href="https://yunjn.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>长生</a>
             </li>
           
         </ul>
