@@ -207,21 +207,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在前几天的博文【<a href="https://opano.top/2023/03/06/自建内网穿透实现Minecraft联机/" target="_blank" rel="noopener">自建内网穿透实现Minecraft联机</a>】里我提到了较为稳定的联机方式，这几天体验下来十分稳定，延迟抖动各方面都很优秀，只是有个地方不太优雅，朋友需要填<code>IP地址:25565</code>来加入游戏，IP地址直接对外暴露，后面还要带个端口号，于是我想着弄成<code>mc.hypixel.net</code>这类，看着优雅不少。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如题前几天的博文【<a href="https://opano.top/2023/03/06/自建内网穿透实现Minecraft联机/" target="_blank" rel="noopener">自建内网穿透实现Minecraft联机</a>】，这几天体验下来十分稳定，延迟抖动各方面都很优秀，只是有个地方不太优雅，朋友需要填<code>IP地址:25565</code>来加入游戏，IP地址直接对外暴露，后面还要带个端口号，于是我想着弄成<code>mc.hypixel.net</code>这类，看着优雅不少。</p>
 <h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>我有个域名<code>opano.top</code>(它解析到我博客的Github服务器)，现在为二级域名<code>mc.opano.top</code>添加一个A记录，指向我的腾讯云服务器，用作联机地址。</p>
 <h2 id="服务器端Nginx反代"><a href="#服务器端Nginx反代" class="headerlink" title="服务器端Nginx反代"></a>服务器端Nginx反代</h2><p><strong>1.安装Nginx</strong></p>
 <p>选择合适目录下载解压[<a href="https://nginx.org/download/" target="_blank" rel="noopener">下载地址</a>]。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;nginx</span><br><span class="line">wget https:&#x2F;&#x2F;nginx.org&#x2F;download&#x2F;nginx-1.23.3.tar.gz</span><br><span class="line">tar -zvxf [Tab]</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx</span><br><span class="line">wget https://nginx.org/download/nginx-1.23.3.tar.gz</span><br><span class="line">tar -zvxf [Tab]</span><br></pre></td></tr></table></figure>
 
 <p>检查环境，缺什么补什么。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd [解压目录]</span><br><span class="line">.&#x2F;configure</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd [解压目录]</span><br><span class="line">./configure</span><br></pre></td></tr></table></figure>
 
 <p>一般会报错”error: the HTTP rewrite module requires the PCRE library.”，装PCRE库即可，此后再执行./configure便不会报错。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install libpcre3-dev</span><br><span class="line">.&#x2F;configure</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install libpcre3-dev</span><br><span class="line">./configure</span><br></pre></td></tr></table></figure>
 
 <p>(对于RedHat系/CentOS，网上给出的方案有<code>yum -y install openssl openssl-devel</code>或者<code>yum install pcre-devel</code>.)</p>
 <p>最后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
 
 <p><strong>2.修改配置文件</strong></p>
 <p>(注意每次修改完配置文件都需重启Nginx服务)</p>
@@ -230,6 +230,94 @@
 
 <p>启动<code>./sbin/nginx</code>（重启<code>./sbin/nginx -s reload</code>）。</p>
 <p>现在朋友输入<code>mc.opano.top</code>就可以进入自己的世界啦！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-给已经构建好的Docker容器添加和修改端口映射" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/15/%E7%BB%99%E5%B7%B2%E7%BB%8F%E6%9E%84%E5%BB%BA%E5%A5%BD%E7%9A%84Docker%E5%AE%B9%E5%99%A8%E6%B7%BB%E5%8A%A0%E5%92%8C%E4%BF%AE%E6%94%B9%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/">给已经构建好的Docker容器添加和修改端口映射</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/15/%E7%BB%99%E5%B7%B2%E7%BB%8F%E6%9E%84%E5%BB%BA%E5%A5%BD%E7%9A%84Docker%E5%AE%B9%E5%99%A8%E6%B7%BB%E5%8A%A0%E5%92%8C%E4%BF%AE%E6%94%B9%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" class="archive-article-date">
+  	<time datetime="2023-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>没啥好说的，就恰好有了这个需求，感觉这个需求应该挺多的，为什么Docker不提供一个更简单的方式呢。</p>
+<h2 id="容器尚未构建"><a href="#容器尚未构建" class="headerlink" title="容器尚未构建"></a>容器尚未构建</h2><p>在构建之前明确知道要开放哪些端口，用<code>-p 宿主机port:容器port</code> 参数来构建，网络上教程很多，可参考<a href="https://yeasy.gitbook.io/docker_practice/network/port_mapping" target="_blank" rel="noopener">贴1</a>，<a href="https://www.twle.cn/l/yufei/docker/docker-basic-container-port.html" target="_blank" rel="noopener">贴2</a>。</p>
+<h2 id="容器已经构建"><a href="#容器已经构建" class="headerlink" title="容器已经构建"></a>容器已经构建</h2><p><strong>1.关闭Docker服务</strong></p>
+<p>一定要先关闭docker服务再修改，负责可能写不成功。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.修改配置文件</strong></p>
+<p>查看容器完整id：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker inspect &#123;容器的名称或缩写id&#125; | grep Id</span><br><span class="line">// docker inspect a8e | grep Id</span><br></pre></td></tr></table></figure>
+
+<p>配置文件<code>/var/lib/docker/containers/[容器id]/hostconfig.json</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 修改这项内容</span></span><br><span class="line">    "PortBindings": &#123;</span><br><span class="line">        "&#123;容器port&#125;/tcp": [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"HostIp"</span>: <span class="string">""</span>,</span><br><span class="line">                <span class="attr">"HostPort"</span>: <span class="string">"&#123;宿主机port&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="comment">// 容器port和宿主机port相同便于管理</span></span><br><span class="line">        "50831/tcp": [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"HostIp"</span>: <span class="string">""</span>,</span><br><span class="line">                <span class="attr">"HostPort"</span>: <span class="string">"50831"</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置文件<code>/var/lib/docker/containers/[容器id]/config.v2.json</code>或者<code>.../config.json</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    "Config": &#123;</span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// 若没有这一项，自己按照格式添加</span></span><br><span class="line">        "ExposedPorts": &#123;</span><br><span class="line">            "容器port/tcp": &#123;&#125;,</span><br><span class="line">            "50831/tcp": &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        ...</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动Docker，并查看端口情况，若没看见端口信息，说明没修改成功，检查配置文件重新修改一遍。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">docker ps // 或者docker port &#123;容器id&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -391,19 +479,19 @@
 
 
   
-    <article id="post-python导包apscheduler失败" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Python导包apscheduler失败" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/24/python%E5%AF%BC%E5%8C%85apscheduler%E5%A4%B1%E8%B4%A5/">python导包apscheduler失败</a>
+      <a class="article-title" href="/2022/10/24/Python%E5%AF%BC%E5%8C%85apscheduler%E5%A4%B1%E8%B4%A5/">Python导包apscheduler失败</a>
     </h1>
   
 
         
-        <a href="/2022/10/24/python%E5%AF%BC%E5%8C%85apscheduler%E5%A4%B1%E8%B4%A5/" class="archive-article-date">
+        <a href="/2022/10/24/Python%E5%AF%BC%E5%8C%85apscheduler%E5%A4%B1%E8%B4%A5/" class="archive-article-date">
   	<time datetime="2022-10-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -940,81 +1028,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo d一种报错的解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/15/hexo%20d%E4%B8%80%E7%A7%8D%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">hexo d一种报错的解决方案</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/15/hexo%20d%E4%B8%80%E7%A7%8D%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2021-11-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>2023-3-6补充：网络不稳定也可能出现这种情况，如果多次尝试依然报错再尝试解决，附另一种可能行的<a href="https://blog.csdn.net/weixin_43945983/article/details/110882074" target="_blank" rel="noopener">方法</a>。</strong></p>
-<p>这不一年多没更博客了，一更就出问题😅</p>
-<center><img src="/2021/11/15/hexo%20d%E4%B8%80%E7%A7%8D%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/img.png"></center>
-
-<p>解决方案参考 <a href="https://github.com/hexojs/hexo/issues/2778" target="_blank" rel="noopener">https://github.com/hexojs/hexo/issues/2778</a> 下的方法（前提是系统建立了与github的ssh连接），更换<code>https://github.com/izaynpan/izaynpan.github.io.git/</code>为<code>git@github.com:izaynpan/izaynpan.github.io.git</code> </p>
-<p>命令为<code>hexo config deploy.repository git@github.com:[yourgitname]/[yourgitname].github.io.git</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
         		</li>
       		
 		</ul>

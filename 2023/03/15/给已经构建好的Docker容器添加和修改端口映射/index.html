@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://izaynpan.github.io">
-  <title>Archives | Blog-izaynpan</title>
+  <title>给已经构建好的Docker容器添加和修改端口映射 | Blog-izaynpan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Blog-izaynpan">
-<meta property="og:url" content="http://izaynpan.github.io/archives/page/2/index.html">
+  <meta name="description" content="前言没啥好说的，就恰好有了这个需求，感觉这个需求应该挺多的，为什么Docker不提供一个更简单的方式呢。 容器尚未构建在构建之前明确知道要开放哪些端口，用-p 宿主机port:容器port 参数来构建，网络上教程很多，可参考贴1，贴2。 容器已经构建1.关闭Docker服务 一定要先关闭docker服务再修改，负责可能写不成功。 1systemctl restart docker  2.修改配置文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给已经构建好的Docker容器添加和修改端口映射">
+<meta property="og:url" content="http://izaynpan.github.io/2023/03/15/%E7%BB%99%E5%B7%B2%E7%BB%8F%E6%9E%84%E5%BB%BA%E5%A5%BD%E7%9A%84Docker%E5%AE%B9%E5%99%A8%E6%B7%BB%E5%8A%A0%E5%92%8C%E4%BF%AE%E6%94%B9%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/index.html">
 <meta property="og:site_name" content="Blog-izaynpan">
+<meta property="og:description" content="前言没啥好说的，就恰好有了这个需求，感觉这个需求应该挺多的，为什么Docker不提供一个更简单的方式呢。 容器尚未构建在构建之前明确知道要开放哪些端口，用-p 宿主机port:容器port 参数来构建，网络上教程很多，可参考贴1，贴2。 容器已经构建1.关闭Docker服务 一定要先关闭docker服务再修改，负责可能写不成功。 1systemctl restart docker  2.修改配置文">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-15T15:35:59.000Z">
 <meta property="article:author" content="低吟浅唱">
+<meta property="article:tag" content="服务器">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Blog-izaynpan" type="application/atom+xml">
@@ -185,349 +190,185 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-给已经构建好的Docker容器添加和修改端口映射" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/" class="archive-article-date">
-  	<time datetime="2022-03-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-05</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/">Android Studio一些配置文件夹位置更改</a>
+    <h1 class="article-title" itemprop="name">
+      给已经构建好的Docker容器添加和修改端口映射
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2023/03/15/%E7%BB%99%E5%B7%B2%E7%BB%8F%E6%9E%84%E5%BB%BA%E5%A5%BD%E7%9A%84Docker%E5%AE%B9%E5%99%A8%E6%B7%BB%E5%8A%A0%E5%92%8C%E4%BF%AE%E6%94%B9%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" class="archive-article-date">
+  	<time datetime="2023-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>没啥好说的，就恰好有了这个需求，感觉这个需求应该挺多的，为什么Docker不提供一个更简单的方式呢。</p>
+<h2 id="容器尚未构建"><a href="#容器尚未构建" class="headerlink" title="容器尚未构建"></a>容器尚未构建</h2><p>在构建之前明确知道要开放哪些端口，用<code>-p 宿主机port:容器port</code> 参数来构建，网络上教程很多，可参考<a href="https://yeasy.gitbook.io/docker_practice/network/port_mapping" target="_blank" rel="noopener">贴1</a>，<a href="https://www.twle.cn/l/yufei/docker/docker-basic-container-port.html" target="_blank" rel="noopener">贴2</a>。</p>
+<h2 id="容器已经构建"><a href="#容器已经构建" class="headerlink" title="容器已经构建"></a>容器已经构建</h2><p><strong>1.关闭Docker服务</strong></p>
+<p>一定要先关闭docker服务再修改，负责可能写不成功。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.修改配置文件</strong></p>
+<p>查看容器完整id：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker inspect &#123;容器的名称或缩写id&#125; | grep Id</span><br><span class="line">// docker inspect a8e | grep Id</span><br></pre></td></tr></table></figure>
+
+<p>配置文件<code>/var/lib/docker/containers/[容器id]/hostconfig.json</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 修改这项内容</span></span><br><span class="line">    "PortBindings": &#123;</span><br><span class="line">        "&#123;容器port&#125;/tcp": [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"HostIp"</span>: <span class="string">""</span>,</span><br><span class="line">                <span class="attr">"HostPort"</span>: <span class="string">"&#123;宿主机port&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="comment">// 容器port和宿主机port相同便于管理</span></span><br><span class="line">        "50831/tcp": [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"HostIp"</span>: <span class="string">""</span>,</span><br><span class="line">                <span class="attr">"HostPort"</span>: <span class="string">"50831"</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置文件<code>/var/lib/docker/containers/[容器id]/config.v2.json</code>或者<code>.../config.json</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    "Config": &#123;</span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// 若没有这一项，自己按照格式添加</span></span><br><span class="line">        "ExposedPorts": &#123;</span><br><span class="line">            "容器port/tcp": &#123;&#125;,</span><br><span class="line">            "50831/tcp": &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        ...</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动Docker，并查看端口情况，若没看见端口信息，说明没修改成功，检查配置文件重新修改一遍。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">docker ps // 或者docker port &#123;容器id&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/21/Windows10%E5%8F%96%E6%B6%88%E6%96%87%E4%BB%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2021-11-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/21/Windows10%E5%8F%96%E6%B6%88%E6%96%87%E4%BB%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">Windows10取消文件的默认打开方式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/15/hexo%20d%E4%B8%80%E7%A7%8D%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2021-11-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/15/hexo%20d%E4%B8%80%E7%A7%8D%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">hexo d一种报错的解决方案</a>
-    </h1>
-  
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://izaynpan.github.io/2023/03/15/%E7%BB%99%E5%B7%B2%E7%BB%8F%E6%9E%84%E5%BB%BA%E5%A5%BD%E7%9A%84Docker%E5%AE%B9%E5%99%A8%E6%B7%BB%E5%8A%A0%E5%92%8C%E4%BF%AE%E6%94%B9%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/14/PR%E5%A4%9A%E4%B8%AA%E5%88%87%E7%89%87%E7%B4%A0%E6%9D%90%E5%BF%AB%E9%80%9F%E5%B7%A6%E5%AF%B9%E9%BD%90%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2021-11-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/14/PR%E5%A4%9A%E4%B8%AA%E5%88%87%E7%89%87%E7%B4%A0%E6%9D%90%E5%BF%AB%E9%80%9F%E5%B7%A6%E5%AF%B9%E9%BD%90%E6%96%B9%E6%B3%95/">PR多个切片素材快速左对齐方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多媒体</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+<div class="mask js-mask"></div>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/19/%E8%AF%88%E5%B0%B8%EF%BC%81/" class="archive-article-date">
-  	<time datetime="2020-08-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/19/%E8%AF%88%E5%B0%B8%EF%BC%81/">诈尸！</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/13/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" class="archive-article-date">
-  	<time datetime="2020-07-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2023/03/15/%E5%88%A9%E7%94%A8Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%B0%86%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84%E5%88%B0%E6%8C%87%E5%AE%9A%E7%AB%AF%E5%8F%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          利用Nginx反向代理将域名映射到指定端口
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/06/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0Minecraft%E8%81%94%E6%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">自建内网穿透实现Minecraft联机</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/13/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/">Hexo博客备份与恢复</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器尚未构建"><span class="toc-number">2.</span> <span class="toc-text">容器尚未构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器已经构建"><span class="toc-number">3.</span> <span class="toc-text">容器已经构建</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/Windows10%E5%8D%95%E7%8B%AC%E7%BB%99%E7%A8%8B%E5%BA%8F%E8%AE%BE%E7%BD%AEDPI%E7%BC%A9%E6%94%BE/" class="archive-article-date">
-  	<time datetime="2020-06-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/Windows10%E5%8D%95%E7%8B%AC%E7%BB%99%E7%A8%8B%E5%BA%8F%E8%AE%BE%E7%BD%AEDPI%E7%BC%A9%E6%94%BE/">Windows10单独给程序设置DPI缩放</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/Windows10%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E9%A1%B9%E5%9C%A8%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-06-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/Windows10%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E9%A1%B9%E5%9C%A8%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE/">Windows10右键菜单项在注册表中的位置</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&lt; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/3/">Next &gt;</a>
-    </nav>
   
 
 
@@ -581,8 +422,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
