@@ -187,6 +187,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-PR代理剪辑的一些问题记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">PR代理剪辑的一些问题记录</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+  	<time datetime="2023-03-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>剪辑几个1080p60码率10Mbps的素材，所有片段加起来总时长3个小时，结果就是卡得动不了，决定用创建代理(Proxy)的方式剪辑。整个过程走下来，遇到了不少问题，特此记录。网上也有不少人分享自己遇到了这类问题，表现类似，但成因不尽相同，一些伙伴分享了自己的解决方法，我也给出一套我自己的解决方法。</p>
+<h2 id="问题一：Adobe-Media-Encoder转码太慢"><a href="#问题一：Adobe-Media-Encoder转码太慢" class="headerlink" title="问题一：Adobe Media Encoder转码太慢"></a>问题一：Adobe Media Encoder转码太慢</h2><p>一般创建代理的步骤：PR里选择素材-右键创建代理(Create Proxies)-选择预设(可提前在AME里新建预设)-PR唤起AME进行转码操作-转码完毕代理创建完成。但我机器配置太差，4GB的一个片段，预估完成时间硬是从20分钟一直涨到数个小时并且没有回落的趋势，直接倒在开头。</p>
+<p><strong>解决方法：</strong>使用其他的转码软件<a href="https://www.mediacoderhq.com/" target="_blank" rel="noopener"><strong>MediaCoder</strong></a>，将视频手动转码后再去PR连接代理，此时创建代理的步骤为：MediaCoder里选择素材-调整设置进行转码-PR里选择对应素材-右键连接代理(Attach Proxies)-选择转码后的素材。</p>
+<p>MediaCoder根据下图设置。代理文件质量不需太高，我这里尽量往低了调。视频栏：<strong>取消</strong>勾选复制视频流（否则就会直接输出原画面了），码率模式选择平均码率模式(VBR)，视频码率设置成256Kbps，格式H.264，编码器可以选择硬件加速。音频栏：<strong>勾选</strong>复制音频流（否则PR连接代理时可能会报错音频通道不匹配的问题）。容器栏选择MP4。画面栏：分辨率选择640x360（比PR预览框分辨率稍大），帧率一定是<strong>原始</strong>（代理素材需和原素材帧率一致，否则剪辑效果可能会错位）。</p>
+<center><img src="/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img1.png"></center>
+
+<p>（复盘的时候发现创建代理时的转码格式有QuickTime(苹果开发的多媒体框架)可选，不过里面都带了GoPro CineForm字样，不确定是否是通用的格式（ChatGPT说是），是否能解决下面的问题二。）</p>
+<h2 id="问题二：代理素材预览效果与原素材表现不一致"><a href="#问题二：代理素材预览效果与原素材表现不一致" class="headerlink" title="问题二：代理素材预览效果与原素材表现不一致"></a>问题二：代理素材预览效果与原素材表现不一致</h2><p>我这里问题的表现：代理素材呈现的是原素材上下翻转的画面，剪辑效果不能正确呈现在原素材上，并且预览原素材时总是闪回到开头，但进度条未变。</p>
+<p>问题成因：我出问题的视频素材用iPad录制的，苹果设备录像的编码格式默认为HEVC(H.265)，我的PR版本是2018，有人分享说使用2021版或者2022版能解决问题，或许是因为新版对H.265或者说苹果录制的H.265支持更好？</p>
+<p><strong>解决方法：</strong>苹果相机设置里修改格式为兼容性最佳（使用H.264编码），但我已经使用代理基本剪辑完成了，重录素材重新剪辑不可行，只能曲线救国狸猫换太子。使用MediaCoder转码原素材，换用H.264来重新编码。PR里右键脱机(Make Offline)原素材，再连接媒体(Link Media)，选择新素材。</p>
+<p>MediaCoder根据下图设置（注意与上面转码成代理的区别）。视频栏：<strong>取消</strong>勾选复制视频流，码率模式选平均码率模式(VBR)，视频码率选择与原视频接近的码率，格式H.264，编码器可选择硬件加速。音频栏：勾选复制音频流。容器选择MP4。画面栏：分辨率和帧率都保持原始。</p>
+<center><img src="/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img2.png"></center>
+
+<p>补充下<a href="https://www.bilibili.com/video/BV1qJ411h7Lo" target="_blank" rel="noopener">网友</a>分享的一种情况和解决方法：代理剪辑的效果与关闭代理模式后的预览效果相差数秒，定位原因是AME在转码的时候原素材与转码素材帧率有细微差别导致，解决方法是把原素材的帧率改成和代理素材一致。</p>
+<h2 id="问题三：关闭代理模式后在导出时卡死"><a href="#问题三：关闭代理模式后在导出时卡死" class="headerlink" title="问题三：关闭代理模式后在导出时卡死"></a>问题三：关闭代理模式后在导出时卡死</h2><p>网上说导出要先关闭代理模式，然后在导出设置里取消勾选使用预览(Use Previews)和使用代理(Use Proxies)。我测试结果是关闭了代理模式在导出时必定会未响应（配置太差），我索性不关，然后在导出里取消勾选使用预览（默认是取消，并且我的版本没有使用代理的复选框），顺利导出。补充一下怎么显示代理按钮。</p>
+<center><img src="/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img3.png"></center>
+
+<h2 id="一些话"><a href="#一些话" class="headerlink" title="一些话"></a>一些话</h2><p>感觉像是在给MediaCoder打广告哈哈，我之前一个<a href="https://opano.top/2020/06/16/flvmkv%E6%A0%BC%E5%BC%8F%E6%97%A0%E6%8D%9F%E8%BD%ACmp4/" target="_blank" rel="noopener">博文</a>里提到无损转换视频的封装格式也是用的MediaCoder。Adobe Media Encoder毋庸置疑很强大，但在我的电脑配置下，显然不如MediaCoder好用。代理剪辑其实限制很多，太复杂的剪辑还是得直接上原素材，所以从根源上解决问题还是得靠钱呀😂。然后有关编码的一系列命名看着头疼，需要一份条理清晰的科普来拯救我:-(，暂时我就简单理解成H.265, HEVC二者更亲，H.264, MPEG-4, AVC三者更亲。最后最后，<a href="https://www.bilibili.com/video/BV1mM4y1z76P" target="_blank" rel="noopener">私货</a>。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多媒体</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-利用Nginx反向代理将域名映射到指定端口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -210,6 +297,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如题前几天的博文【<a href="https://opano.top/2023/03/06/自建内网穿透实现Minecraft联机/" target="_blank" rel="noopener">自建内网穿透实现Minecraft联机</a>】，这几天体验下来十分稳定，延迟抖动各方面都很优秀，只是有个地方不太优雅，朋友需要填<code>IP地址:25565</code>来加入游戏，IP地址直接对外暴露，后面还要带个端口号，于是我想着弄成<code>mc.hypixel.net</code>这类，看着优雅不少。</p>
 <h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>我有个域名<code>opano.top</code>(它解析到我博客的Github服务器)，现在为二级域名<code>mc.opano.top</code>添加一个A记录，指向我的腾讯云服务器，用作联机地址。</p>
 <h2 id="服务器端Nginx反代"><a href="#服务器端Nginx反代" class="headerlink" title="服务器端Nginx反代"></a>服务器端Nginx反代</h2><p><strong>1.安装Nginx</strong></p>
+<p>（省事也可以使用<code>apt install nginx</code>）</p>
 <p>选择合适目录下载解压[<a href="https://nginx.org/download/" target="_blank" rel="noopener">下载地址</a>]。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx</span><br><span class="line">wget https://nginx.org/download/nginx-1.23.3.tar.gz</span><br><span class="line">tar -zvxf [Tab]</span><br></pre></td></tr></table></figure>
 
@@ -949,85 +1037,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Windows10取消文件的默认打开方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/21/Windows10%E5%8F%96%E6%B6%88%E6%96%87%E4%BB%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">Windows10取消文件的默认打开方式</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/21/Windows10%E5%8F%96%E6%B6%88%E6%96%87%E4%BB%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2021-11-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>不小心把ipynb文件用editplus打开了还设置成默认打开方式了，想要恢复成无默认打开方式的状态，发现win10没有提供取消默认的选项，只能切换默认打开方式，于是百度发现了一个<a href="https://zhidao.baidu.com/question/713244648066218405.html" target="_blank" rel="noopener">方法</a>，记录一下。</p>
-<p>1.新建一个无格式文件或无意义文件，如下图中t.t</p>
-<center><img src="/2021/11/21/Windows10%E5%8F%96%E6%B6%88%E6%96%87%E4%BB%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/img1.png"></center>
-
-<p>2.选择t.t为默认打开方式</p>
-<center><img src="/2021/11/21/Windows10%E5%8F%96%E6%B6%88%E6%96%87%E4%BB%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/img2.png"></center>
-
-<p>3.再把t.t删掉</p>
-<center><img src="/2021/11/21/Windows10%E5%8F%96%E6%B6%88%E6%96%87%E4%BB%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/img3.png"></center>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
         		</li>
       		
 		</ul>

@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://izaynpan.github.io">
-  <title>Archives | Blog-izaynpan</title>
+  <title>PR代理剪辑的一些问题记录 | Blog-izaynpan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Blog-izaynpan">
-<meta property="og:url" content="http://izaynpan.github.io/archives/page/4/index.html">
+  <meta name="description" content="前言剪辑几个1080p60码率10Mbps的素材，所有片段加起来总时长3个小时，结果就是卡得动不了，决定用创建代理(Proxy)的方式剪辑。整个过程走下来，遇到了不少问题，特此记录。网上也有不少人分享自己遇到了这类问题，表现类似，但成因不尽相同，一些伙伴分享了自己的解决方法，我也给出一套我自己的解决方法。 问题一：Adobe Media Encoder转码太慢一般创建代理的步骤：PR里选择素材-右">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PR代理剪辑的一些问题记录">
+<meta property="og:url" content="http://izaynpan.github.io/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="Blog-izaynpan">
+<meta property="og:description" content="前言剪辑几个1080p60码率10Mbps的素材，所有片段加起来总时长3个小时，结果就是卡得动不了，决定用创建代理(Proxy)的方式剪辑。整个过程走下来，遇到了不少问题，特此记录。网上也有不少人分享自己遇到了这类问题，表现类似，但成因不尽相同，一些伙伴分享了自己的解决方法，我也给出一套我自己的解决方法。 问题一：Adobe Media Encoder转码太慢一般创建代理的步骤：PR里选择素材-右">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://izaynpan.github.io/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img1.png">
+<meta property="og:image" content="http://izaynpan.github.io/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img2.png">
+<meta property="og:image" content="http://izaynpan.github.io/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img3.png">
+<meta property="article:published_time" content="2023-03-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-20T11:21:17.286Z">
 <meta property="article:author" content="低吟浅唱">
+<meta property="article:tag" content="多媒体">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://izaynpan.github.io/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img1.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog-izaynpan" type="application/atom+xml">
   
@@ -185,329 +194,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-PR代理剪辑的一些问题记录" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PR代理剪辑的一些问题记录
+    </h1>
+  
+
+        
+        <a href="/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+  	<time datetime="2023-03-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-20</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>剪辑几个1080p60码率10Mbps的素材，所有片段加起来总时长3个小时，结果就是卡得动不了，决定用创建代理(Proxy)的方式剪辑。整个过程走下来，遇到了不少问题，特此记录。网上也有不少人分享自己遇到了这类问题，表现类似，但成因不尽相同，一些伙伴分享了自己的解决方法，我也给出一套我自己的解决方法。</p>
+<h2 id="问题一：Adobe-Media-Encoder转码太慢"><a href="#问题一：Adobe-Media-Encoder转码太慢" class="headerlink" title="问题一：Adobe Media Encoder转码太慢"></a>问题一：Adobe Media Encoder转码太慢</h2><p>一般创建代理的步骤：PR里选择素材-右键创建代理(Create Proxies)-选择预设(可提前在AME里新建预设)-PR唤起AME进行转码操作-转码完毕代理创建完成。但我机器配置太差，4GB的一个片段，预估完成时间硬是从20分钟一直涨到数个小时并且没有回落的趋势，直接倒在开头。</p>
+<p><strong>解决方法：</strong>使用其他的转码软件<a href="https://www.mediacoderhq.com/" target="_blank" rel="noopener"><strong>MediaCoder</strong></a>，将视频手动转码后再去PR连接代理，此时创建代理的步骤为：MediaCoder里选择素材-调整设置进行转码-PR里选择对应素材-右键连接代理(Attach Proxies)-选择转码后的素材。</p>
+<p>MediaCoder根据下图设置。代理文件质量不需太高，我这里尽量往低了调。视频栏：<strong>取消</strong>勾选复制视频流（否则就会直接输出原画面了），码率模式选择平均码率模式(VBR)，视频码率设置成256Kbps，格式H.264，编码器可以选择硬件加速。音频栏：<strong>勾选</strong>复制音频流（否则PR连接代理时可能会报错音频通道不匹配的问题）。容器栏选择MP4。画面栏：分辨率选择640x360（比PR预览框分辨率稍大），帧率一定是<strong>原始</strong>（代理素材需和原素材帧率一致，否则剪辑效果可能会错位）。</p>
+<center><img src="/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img1.png"></center>
+
+<p>（复盘的时候发现创建代理时的转码格式有QuickTime(苹果开发的多媒体框架)可选，不过里面都带了GoPro CineForm字样，不确定是否是通用的格式（ChatGPT说是），是否能解决下面的问题二。）</p>
+<h2 id="问题二：代理素材预览效果与原素材表现不一致"><a href="#问题二：代理素材预览效果与原素材表现不一致" class="headerlink" title="问题二：代理素材预览效果与原素材表现不一致"></a>问题二：代理素材预览效果与原素材表现不一致</h2><p>我这里问题的表现：代理素材呈现的是原素材上下翻转的画面，剪辑效果不能正确呈现在原素材上，并且预览原素材时总是闪回到开头，但进度条未变。</p>
+<p>问题成因：我出问题的视频素材用iPad录制的，苹果设备录像的编码格式默认为HEVC(H.265)，我的PR版本是2018，有人分享说使用2021版或者2022版能解决问题，或许是因为新版对H.265或者说苹果录制的H.265支持更好？</p>
+<p><strong>解决方法：</strong>苹果相机设置里修改格式为兼容性最佳（使用H.264编码），但我已经使用代理基本剪辑完成了，重录素材重新剪辑不可行，只能曲线救国狸猫换太子。使用MediaCoder转码原素材，换用H.264来重新编码。PR里右键脱机(Make Offline)原素材，再连接媒体(Link Media)，选择新素材。</p>
+<p>MediaCoder根据下图设置（注意与上面转码成代理的区别）。视频栏：<strong>取消</strong>勾选复制视频流，码率模式选平均码率模式(VBR)，视频码率选择与原视频接近的码率，格式H.264，编码器可选择硬件加速。音频栏：勾选复制音频流。容器选择MP4。画面栏：分辨率和帧率都保持原始。</p>
+<center><img src="/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img2.png"></center>
+
+<p>补充下<a href="https://www.bilibili.com/video/BV1qJ411h7Lo" target="_blank" rel="noopener">网友</a>分享的一种情况和解决方法：代理剪辑的效果与关闭代理模式后的预览效果相差数秒，定位原因是AME在转码的时候原素材与转码素材帧率有细微差别导致，解决方法是把原素材的帧率改成和代理素材一致。</p>
+<h2 id="问题三：关闭代理模式后在导出时卡死"><a href="#问题三：关闭代理模式后在导出时卡死" class="headerlink" title="问题三：关闭代理模式后在导出时卡死"></a>问题三：关闭代理模式后在导出时卡死</h2><p>网上说导出要先关闭代理模式，然后在导出设置里取消勾选使用预览(Use Previews)和使用代理(Use Proxies)。我测试结果是关闭了代理模式在导出时必定会未响应（配置太差），我索性不关，然后在导出里取消勾选使用预览（默认是取消，并且我的版本没有使用代理的复选框），顺利导出。补充一下怎么显示代理按钮。</p>
+<center><img src="/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img3.png"></center>
+
+<h2 id="一些话"><a href="#一些话" class="headerlink" title="一些话"></a>一些话</h2><p>感觉像是在给MediaCoder打广告哈哈，我之前一个<a href="https://opano.top/2020/06/16/flvmkv%E6%A0%BC%E5%BC%8F%E6%97%A0%E6%8D%9F%E8%BD%ACmp4/" target="_blank" rel="noopener">博文</a>里提到无损转换视频的封装格式也是用的MediaCoder。Adobe Media Encoder毋庸置疑很强大，但在我的电脑配置下，显然不如MediaCoder好用。代理剪辑其实限制很多，太复杂的剪辑还是得直接上原素材，所以从根源上解决问题还是得靠钱呀😂。然后有关编码的一系列命名看着头疼，需要一份条理清晰的科普来拯救我:-(，暂时我就简单理解成H.265, HEVC二者更亲，H.264, MPEG-4, AVC三者更亲。最后最后，<a href="https://www.bilibili.com/video/BV1mM4y1z76P" target="_blank" rel="noopener">私货</a>。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/31/%E4%BD%95%E4%B8%BA%E9%9A%8F%E7%AC%94/" class="archive-article-date">
-  	<time datetime="2020-05-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/31/%E4%BD%95%E4%B8%BA%E9%9A%8F%E7%AC%94/">何为随笔</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多媒体</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://izaynpan.github.io/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/30/Hexo%E4%B8%8Byilia%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E8%83%8C%E6%99%AF/" class="archive-article-date">
-  	<time datetime="2020-05-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-30</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/03/15/%E5%88%A9%E7%94%A8Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%B0%86%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84%E5%88%B0%E6%8C%87%E5%AE%9A%E7%AB%AF%E5%8F%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">利用Nginx反向代理将域名映射到指定端口</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/30/Hexo%E4%B8%8Byilia%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E8%83%8C%E6%99%AF/">Hexo下yilia主题自定义背景</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题一：Adobe-Media-Encoder转码太慢"><span class="toc-number">2.</span> <span class="toc-text">问题一：Adobe Media Encoder转码太慢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题二：代理素材预览效果与原素材表现不一致"><span class="toc-number">3.</span> <span class="toc-text">问题二：代理素材预览效果与原素材表现不一致</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题三：关闭代理模式后在导出时卡死"><span class="toc-number">4.</span> <span class="toc-text">问题三：关闭代理模式后在导出时卡死</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些话"><span class="toc-number">5.</span> <span class="toc-text">一些话</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/29/Windows10%E6%A1%8C%E9%9D%A2%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%B7%BB%E5%8A%A0%E6%B7%B1%E8%89%B2%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BA%AE%E8%89%B2%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-05-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/29/Windows10%E6%A1%8C%E9%9D%A2%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%B7%BB%E5%8A%A0%E6%B7%B1%E8%89%B2%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BA%AE%E8%89%B2%E6%A8%A1%E5%BC%8F/">Windows10桌面右键菜单添加深色模式与亮色模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/28/Office%E6%BF%80%E6%B4%BB%E7%8E%84%E5%AD%A6%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="archive-article-date">
-  	<time datetime="2020-05-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/28/Office%E6%BF%80%E6%B4%BB%E7%8E%84%E5%AD%A6%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">Office激活玄学问题解决</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/26/Hexo%E4%B8%AD%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%AD%A3%E7%A1%AE%E6%98%BE%E7%A4%BA%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-05-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/26/Hexo%E4%B8%AD%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%AD%A3%E7%A1%AE%E6%98%BE%E7%A4%BA%E6%96%B9%E6%B3%95/">Hexo中本地图片正确显示方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/26/%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91%E5%BC%95%E5%8F%91%E7%9A%84bugs/" class="archive-article-date">
-  	<time datetime="2020-05-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/26/%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91%E5%BC%95%E5%8F%91%E7%9A%84bugs/">划词翻译引发的bugs</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/25/Windows10%E5%88%A0%E9%99%A4%E5%90%AF%E5%8A%A8%E9%A1%B9/" class="archive-article-date">
-  	<time datetime="2020-05-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/25/Windows10%E5%88%A0%E9%99%A4%E5%90%AF%E5%8A%A8%E9%A1%B9/">Windows10删除启动项</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/25/%E4%B8%89%E6%98%9F%E6%89%8B%E6%9C%BA%E6%8A%95%E5%B1%8FWindows10%E7%94%B5%E8%84%91/" class="archive-article-date">
-  	<time datetime="2020-05-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/25/%E4%B8%89%E6%98%9F%E6%89%8B%E6%9C%BA%E6%8A%95%E5%B1%8FWindows10%E7%94%B5%E8%84%91/">三星手机投屏Windows10电脑(现有dex、flow等更好解决方案待更新)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&lt; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/5/">Next &gt;</a>
-    </nav>
   
 
 
@@ -561,8 +416,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
