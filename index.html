@@ -187,6 +187,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-在Windows终端中使用代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/26/%E5%9C%A8Windows%E7%BB%88%E7%AB%AF%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/">在Windows终端中使用代理</a>
+    </h1>
+  
+
+        
+        <a href="/2023/07/26/%E5%9C%A8Windows%E7%BB%88%E7%AB%AF%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/" class="archive-article-date">
+  	<time datetime="2023-07-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>Clash for Windows -&gt; General -&gt; Port 点击右侧的Windows Terminal的图标</li>
+<li>其中<code>CMD</code> <code>Powershell</code> <code>Windows Terminal</code>会自动打开相应的临时的走代理的终端</li>
+<li><code>Copy Commands Only</code>则提供相应的命令，需自行在终端运行<ul>
+<li>CMD的命令为<code>set http_proxy=http://127.0.0.1:7890 &amp; set https_proxy=http://127.0.0.1:7890</code>，与网上流传最广的版本一致</li>
+<li>Powershell的命令为<code>$Env:http_proxy=&quot;http://127.0.0.1:7890&quot;;$Env:https_proxy=&quot;http://127.0.0.1:7890&quot;</code></li>
+</ul>
+</li>
+</ul>
+<center><img src="/2023/07/26/%E5%9C%A8Windows%E7%BB%88%E7%AB%AF%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/clash页面.png"></center>
+
+<p>注：为终端设置代理主要应该还是为了git的使用，但此种方式只是<strong>临时</strong>代理，只对当前的终端生效。</p>
+<p>注2：ping命令是ICMP协议，处于网络层，流量无法被上层的代理接管转发，所以用ping命令来测试行不通，可以使用curl命令来测试，curl使用到的协议基本处于应用层。如果真的想要ping通，可考虑尝试VPN。</p>
+<center><img src="/2023/07/26/%E5%9C%A8Windows%E7%BB%88%E7%AB%AF%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/网络层级.jpg"></center>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">terminal</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-PR代理剪辑的一些问题记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -224,7 +311,7 @@
 <h2 id="问题三：关闭代理模式后在导出时卡死"><a href="#问题三：关闭代理模式后在导出时卡死" class="headerlink" title="问题三：关闭代理模式后在导出时卡死"></a>问题三：关闭代理模式后在导出时卡死</h2><p>网上说导出要先关闭代理模式，然后在导出设置里取消勾选使用预览(Use Previews)和使用代理(Use Proxies)。我测试结果是关闭了代理模式在导出时必定会未响应（配置太差），我索性不关，然后在导出里取消勾选使用预览（默认是取消，并且我的版本没有使用代理的复选框），顺利导出。补充一下怎么显示代理按钮。</p>
 <center><img src="/2023/03/20/PR%E4%BB%A3%E7%90%86%E5%89%AA%E8%BE%91%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/img3.png"></center>
 
-<h2 id="一些话"><a href="#一些话" class="headerlink" title="一些话"></a>一些话</h2><p>感觉像是在给MediaCoder打广告哈哈，我之前一个<a href="https://opano.top/2020/06/16/flvmkv%E6%A0%BC%E5%BC%8F%E6%97%A0%E6%8D%9F%E8%BD%ACmp4/" target="_blank" rel="noopener">博文</a>里提到无损转换视频的封装格式也是用的MediaCoder。Adobe Media Encoder毋庸置疑很强大，但在我的电脑配置下，显然不如MediaCoder好用。代理剪辑其实限制很多，太复杂的剪辑还是得直接上原素材，所以从根源上解决问题还是得靠钱呀😂。然后有关编码的一系列命名看着头疼，需要一份条理清晰的科普来拯救我:-(，暂时我就简单理解成H.265, HEVC二者更亲，H.264, MPEG-4, AVC三者更亲。最后最后，<a href="https://www.bilibili.com/video/BV1mM4y1z76P" target="_blank" rel="noopener">私货</a>。</p>
+<h2 id="一些话"><a href="#一些话" class="headerlink" title="一些话"></a>一些话</h2><p>感觉像是在给MediaCoder打广告哈哈，我之前一个<a href="https://opano.top/2020/06/16/flvmkv%E6%A0%BC%E5%BC%8F%E6%97%A0%E6%8D%9F%E8%BD%ACmp4/" target="_blank" rel="noopener">博文</a>里提到无损转换视频的封装格式也是用的MediaCoder，还有发给朋友的视频用这个压缩也十分的轻量方便。Adobe Media Encoder毋庸置疑很强大，但在我的电脑配置下，显然不如MediaCoder好用。代理剪辑其实限制很多，太复杂的剪辑还是得直接上原素材，所以从根源上解决问题还是得靠钱呀😂。然后有关编码的一系列命名看着头疼，需要一份条理清晰的科普来拯救我:-(，暂时我就简单理解成H.265, HEVC二者更亲，H.264, MPEG-4, AVC三者更亲。最后最后，<a href="https://www.bilibili.com/video/BV1mM4y1z76P" target="_blank" rel="noopener">私货</a>。</p>
 
       
 
@@ -995,83 +1082,6 @@
 
 
   
-    <article id="post-Android Studio一些配置文件夹位置更改" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/">Android Studio一些配置文件夹位置更改</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/" class="archive-article-date">
-  	<time datetime="2022-03-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Android Studio默认在系统盘里创建安卓虚拟机、下载gradle相关文件，而AndroidStudio本体和Sdk位置可在安装时更改。以上文件皆会吃掉大量硬盘空间，可更改到系统盘外其他硬盘。</p>
-<center><img src="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img1.jpg"></center>
-
-<h2 id="更改-gradle位置"><a href="#更改-gradle位置" class="headerlink" title="更改.gradle位置"></a>更改.gradle位置</h2><p>gradle相关文件默认在<code>系统盘:\Users\username\.gradle</code>（仅针对Windows），关闭Android Studio后将文件夹.gradle整个剪切到新路径，再打开Android Studio，在Settings里搜索gradle更改Gradle user home的位置为新路径即可。</p>
-<center><img src="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img2.jpg"></center>
-
-<h2 id="更改安卓虚拟机位置"><a href="#更改安卓虚拟机位置" class="headerlink" title="更改安卓虚拟机位置"></a>更改安卓虚拟机位置</h2><p>安卓虚拟机位置默认在<code>系统盘:\Users\username\.android\avd</code>（仅针对Windows），关闭Android Studio后将文件夹avd整个剪切到新路径，再新增一个系统环境变量，变量名为<code>ANDROID_AVD_HOME</code>，变量值为新路径，再次打开Android Studio创建新虚拟机时会默认创建到新路径下。若avd里已有虚拟机，将.ini文件里的path改为新路径即可。</p>
-<center><img src="/2022/03/05/Android%20Studio%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%8D%E7%BD%AE%E6%9B%B4%E6%94%B9/img3.jpg"></center>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &gt;</a>
@@ -1258,6 +1268,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">terminal</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -1308,7 +1322,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://yunjn.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>长生</a>
+              <a href="https://yunjn.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Samuel&#39;s Blog</a>
             </li>
           
         </ul>
