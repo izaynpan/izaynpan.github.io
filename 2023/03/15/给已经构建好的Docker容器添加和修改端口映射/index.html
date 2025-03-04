@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://izaynpan.github.io">
   <title>给已经构建好的Docker容器添加和修改端口映射 | Blog-izaynpan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言没啥好说的，就恰好有了这个需求，感觉这个需求应该挺多的，为什么Docker不提供一个更简单的方式呢。 容器尚未构建在构建之前明确知道要开放哪些端口，用-p 宿主机port:容器port 参数来构建，网络上教程很多，可参考贴1，贴2。 容器已经构建1.关闭Docker服务 一定要先关闭docker服务再修改，负责可能写不成功。 1systemctl restart docker  2.修改配置文">
+  <meta name="description" content="前言没啥好说的，就恰好有了这个需求，感觉这个需求应该挺多的，为什么Docker不提供一个更简单的方式呢。 容器尚未构建在构建之前明确知道要开放哪些端口，用-p 宿主机port:容器port 参数来构建，网络上教程很多，可参考贴1，贴2。 容器已经构建1.关闭Docker服务 一定要先关闭docker服务再修改，负责可能写不成功。 1systemctl stop docker  2.修改配置文件 查">
 <meta property="og:type" content="article">
 <meta property="og:title" content="给已经构建好的Docker容器添加和修改端口映射">
 <meta property="og:url" content="http://izaynpan.github.io/2023/03/15/%E7%BB%99%E5%B7%B2%E7%BB%8F%E6%9E%84%E5%BB%BA%E5%A5%BD%E7%9A%84Docker%E5%AE%B9%E5%99%A8%E6%B7%BB%E5%8A%A0%E5%92%8C%E4%BF%AE%E6%94%B9%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/index.html">
 <meta property="og:site_name" content="Blog-izaynpan">
-<meta property="og:description" content="前言没啥好说的，就恰好有了这个需求，感觉这个需求应该挺多的，为什么Docker不提供一个更简单的方式呢。 容器尚未构建在构建之前明确知道要开放哪些端口，用-p 宿主机port:容器port 参数来构建，网络上教程很多，可参考贴1，贴2。 容器已经构建1.关闭Docker服务 一定要先关闭docker服务再修改，负责可能写不成功。 1systemctl restart docker  2.修改配置文">
+<meta property="og:description" content="前言没啥好说的，就恰好有了这个需求，感觉这个需求应该挺多的，为什么Docker不提供一个更简单的方式呢。 容器尚未构建在构建之前明确知道要开放哪些端口，用-p 宿主机port:容器port 参数来构建，网络上教程很多，可参考贴1，贴2。 容器已经构建1.关闭Docker服务 一定要先关闭docker服务再修改，负责可能写不成功。 1systemctl stop docker  2.修改配置文件 查">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-15T15:35:59.000Z">
+<meta property="article:modified_time" content="2025-03-04T14:21:48.211Z">
 <meta property="article:author" content="低吟浅唱">
 <meta property="article:tag" content="服务器">
 <meta name="twitter:card" content="summary">
@@ -214,7 +214,7 @@
 <h2 id="容器尚未构建"><a href="#容器尚未构建" class="headerlink" title="容器尚未构建"></a>容器尚未构建</h2><p>在构建之前明确知道要开放哪些端口，用<code>-p 宿主机port:容器port</code> 参数来构建，网络上教程很多，可参考<a href="https://yeasy.gitbook.io/docker_practice/network/port_mapping" target="_blank" rel="noopener">贴1</a>，<a href="https://www.twle.cn/l/yufei/docker/docker-basic-container-port.html" target="_blank" rel="noopener">贴2</a>。</p>
 <h2 id="容器已经构建"><a href="#容器已经构建" class="headerlink" title="容器已经构建"></a>容器已经构建</h2><p><strong>1.关闭Docker服务</strong></p>
 <p>一定要先关闭docker服务再修改，负责可能写不成功。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
 
 <p><strong>2.修改配置文件</strong></p>
 <p>查看容器完整id：</p>
@@ -379,7 +379,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020-2023 低吟浅唱
+    		&copy; 2020-2025 低吟浅唱
     	</div>
       	<div class="footer-right">
       		<!-- <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten -->

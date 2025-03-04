@@ -208,11 +208,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>继去年我自己的Windows上Chrome崩溃后，这两天室友的Chrome也无故崩溃了。导致原因未知。</p>
-<p>具体表现为，一打开Chrome就提示插件崩溃，打开任何网页都显示页面崩溃，包括浏览器的设置也无法打开。甚至使用Edge，若导入了Chrome的数据，Edge也会中招崩溃。卸载重装无用。网络上搜到的解决方案都不管用。</p>
+<p>具体表现为，Chrome一打开就提示插件崩溃，无痕模式依然崩溃，打开任何网页都显示页面崩溃，包括浏览器的设置也无法打开。甚至使用Edge，若选择导入Chrome的数据，Edge也会中招崩溃。卸载重装无用。网络上搜到的解决方案都不管用。</p>
 <h2 id="换用低版本Chrome"><a href="#换用低版本Chrome" class="headerlink" title="换用低版本Chrome"></a>换用低版本Chrome</h2><p>经我自己和室友测试，104版本Chrome不会出现崩溃问题，卸载现有版本Chrome后安装104版本可以解决问题。</p>
 <p>附上104版本百度网盘下载<a href="https://pan.baidu.com/s/1yoE_i7vTNw7WXQmNie3Kug?pwd=l2po" target="_blank" rel="noopener">链接</a>。</p>
 <h2 id="关闭Chrome自动更新"><a href="#关闭Chrome自动更新" class="headerlink" title="关闭Chrome自动更新"></a>关闭Chrome自动更新</h2><p>不出意外的话Chrome能正常使用了，包括登录账号同步数据等。但不出意外的话Chrome应该已经开始自动更新并且更新完毕了，就静待着你重启Chrome然后再次崩溃。</p>
-<p>关闭自动更新的方法参考一篇<a href="https://blog.csdn.net/weixin_37858453/article/details/126600461" target="_blank" rel="noopener">博客</a>，(我忘了自己当时是怎么关闭自动更新的)，博客中第一种禁用Google更新服务的方法在我室友的电脑上不适用（找不到Google更新服务），第二种修改Update文件夹权限的方法有效，不过文件夹的目录未必在<code>C:\Program Files (x86)\Google\Update</code>，右键Chrome打开文件所在位置，退回到Google目录层级，把<code>xxx\Google\Update</code>和<code>xxx\Google\GoogleUpdater</code>两个文件夹的所有操作权限全部拒绝即可。最后可选根据博客的第三步关闭更新失败的弹窗提示。</p>
+<p>关闭自动更新的方法参考一篇<a href="https://blog.csdn.net/weixin_37858453/article/details/126600461" target="_blank" rel="noopener">博客</a>，博客中第一种禁用Google更新服务的方法在我室友的电脑上不适用（找不到Google更新服务），第二种修改Update文件夹权限的方法有效，不过文件夹的目录未必在<code>C:\Program Files (x86)\Google\Update</code>，右键Chrome打开文件所在位置，退回到Google目录层级，把<code>xxx\Google\Update</code>和<code>xxx\Google\GoogleUpdater</code>两个文件夹的所有操作权限全部拒绝即可。最后可选根据博客的第三步关闭更新失败的弹窗提示。</p>
 <p>我个人的经验是一段时间后崩溃的问题会莫名其妙解决，可以继续使用Chrome的新版本。</p>
 <h2 id="Chrome-Flash"><a href="#Chrome-Flash" class="headerlink" title="Chrome + Flash"></a>Chrome + Flash</h2><p>先直接给出已经配置好的Portable版，解压即用，Portable版的所有数据只在解压的那个目录，不会跑出去。<a href="https://pan.baidu.com/s/1xEds-JAq5Dhhn0o2JIO9tA?pwd=5wjg" target="_blank" rel="noopener">下载链接</a></p>
 <p>若要自己配置的话可以参考里面的两篇文章教程，阅读顺序是少数派-&gt;远景论坛，注意支持Flash的Chrome最高版本以及Flash未留后门的最后一个版本即可。4399启动器😁。</p>
@@ -636,7 +636,7 @@
 <h2 id="容器尚未构建"><a href="#容器尚未构建" class="headerlink" title="容器尚未构建"></a>容器尚未构建</h2><p>在构建之前明确知道要开放哪些端口，用<code>-p 宿主机port:容器port</code> 参数来构建，网络上教程很多，可参考<a href="https://yeasy.gitbook.io/docker_practice/network/port_mapping" target="_blank" rel="noopener">贴1</a>，<a href="https://www.twle.cn/l/yufei/docker/docker-basic-container-port.html" target="_blank" rel="noopener">贴2</a>。</p>
 <h2 id="容器已经构建"><a href="#容器已经构建" class="headerlink" title="容器已经构建"></a>容器已经构建</h2><p><strong>1.关闭Docker服务</strong></p>
 <p>一定要先关闭docker服务再修改，负责可能写不成功。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
 
 <p><strong>2.修改配置文件</strong></p>
 <p>查看容器完整id：</p>
@@ -1065,7 +1065,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020-2023 低吟浅唱
+    		&copy; 2020-2025 低吟浅唱
     	</div>
       	<div class="footer-right">
       		<!-- <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten -->
